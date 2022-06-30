@@ -1,6 +1,6 @@
 from typing import Optional
 from typing_extensions import Literal
-from raw_client import AlsiRawClient
+from .raw_client import AlsiRawClient
 import pandas as pd
 from datetime import datetime
 
@@ -20,6 +20,7 @@ class AlsiPandasClient(AlsiRawClient):
         Parameters
         ----------
         europe : Literal['ne', 'eu']
+            'ne' for noneurope, eu for europe
         start: Optional[datetime]
             start date
         end: Optional[datetime]

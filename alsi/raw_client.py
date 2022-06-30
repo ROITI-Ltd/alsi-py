@@ -2,8 +2,8 @@ from typing import Optional
 from typing_extensions import Literal
 import aiohttp
 from datetime import datetime
-from exceptions import AccessDeniedException
-from timefilter import Timefilter
+from .exceptions import AccessDeniedException
+from .timefilter import Timefilter
 
 
 class AlsiRawClient:
@@ -99,7 +99,8 @@ class AlsiRawClient:
 
         Parameters
         ----------
-        europe : ['eu', 'ne']
+        europe : Literal['eu', 'ne']
+            'ne' for noneurope, eu for europe
         start: Optional[datetime]
             start date
         end: Optional[datetime]
@@ -119,7 +120,6 @@ class AlsiRawClient:
         >>> API_KEY='...'
         >>> client = AlsiRawClient(api_key=API_KEY)
         >>> result = await client.query_agg_data_for_europe_or_noneurope(europe='eu', start=datetime(2017,3,3), end=datetime(2019, 1,1), limit=10)
-
         """
 
         invalid_param = not europe or europe not in ("eu", "ne")

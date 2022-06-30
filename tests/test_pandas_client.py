@@ -7,7 +7,7 @@ API_KEY = os.getenv("ALSI_KEY")
 
 class TestPandasClient:
     @pytest.mark.asyncio
-    @pytest.yield_fixture(scope="class", autouse=True)
+    @pytest.fixture(scope="class", autouse=True)
     async def client(self):
         dummy_client = AlsiPandasClient("dummy_key")
         pandas_client = AlsiPandasClient(API_KEY)
@@ -17,7 +17,7 @@ class TestPandasClient:
         await pandas_client.close_session()
         await dummy_client.close_session()
 
-    @pytest.yield_fixture(scope="class")
+    @pytest.fixture(scope="class")
     def event_loop(self):
         loop = asyncio.get_event_loop_policy().new_event_loop()
         yield loop
@@ -57,7 +57,7 @@ class TestPandasClient:
     @pytest.mark.asyncio
     async def test_query_by_company_and_country(self, client):
 
-        with pytest.raises(TypeError) as e:
+        with pytest.raises(TypeError):
             await client[1].query_data_by_company_and_country()
 
         await client[0].query_data_by_company_and_country(
@@ -67,7 +67,7 @@ class TestPandasClient:
     @pytest.mark.asyncio
     async def test_query_for_facility(self, client):
 
-        with pytest.raises(TypeError) as e:
+        with pytest.raises(TypeError):
             await client[1].query_data_for_facility()
 
         await client[0].query_data_for_facility(

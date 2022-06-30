@@ -6,7 +6,7 @@ API_KEY = os.getenv("ALSI_KEY")
 
 class TestRawClient:
     @pytest.mark.asyncio
-    @pytest.yield_fixture(scope="class", autouse=True)
+    @pytest.fixture(scope="class", autouse=True)
     async def client(self):
         dummy_client = AlsiRawClient("dummy_key")
         raw_client = AlsiRawClient(API_KEY)
@@ -16,7 +16,7 @@ class TestRawClient:
         await raw_client.close_session()
         await dummy_client.close_session()
 
-    @pytest.yield_fixture(scope="class")
+    @pytest.fixture(scope="class")
     def event_loop(self):
         loop = asyncio.get_event_loop_policy().new_event_loop()
         yield loop
@@ -25,13 +25,13 @@ class TestRawClient:
     @pytest.mark.asyncio
     async def test_raw_client(self):
 
-        with pytest.raises(TypeError) as e:
+        with pytest.raises(TypeError):
             AlsiRawClient(api_key=None)
 
     @pytest.mark.asyncio
     async def test_query_eu_or_noneu(self, client):
 
-        with pytest.raises(TypeError) as e:
+        with pytest.raises(TypeError):
             await client[1].query_agg_data_for_europe_or_noneurope(europe=None)
 
         with pytest.raises(TypeError):
@@ -55,7 +55,7 @@ class TestRawClient:
     @pytest.mark.asyncio
     async def test_query_by_company_and_country(self, client):
 
-        with pytest.raises(TypeError) as e:
+        with pytest.raises(TypeError):
             await client[1].query_data_by_company_and_country(
                 company_code=None, contry_code=None
             )
@@ -67,21 +67,21 @@ class TestRawClient:
     @pytest.mark.asyncio
     async def test_query_for_facility(self, client):
 
-        with pytest.raises(TypeError) as e:
+        with pytest.raises(TypeError):
             await client[1].query_data_for_facility(
                 facility_code=None,
                 country_code="fr",
                 company_code="21X0000000010679",
             )
 
-        with pytest.raises(TypeError) as e:
+        with pytest.raises(TypeError):
             await client[1].query_data_for_facility(
                 facility_code="63W631527814486R",
                 country_code="zzz",
                 company_code="21X0000000010679",
             )
 
-        with pytest.raises(TypeError) as e:
+        with pytest.raises(TypeError):
             await client[1].query_data_for_facility(
                 facility_code="63W631527814486R",
                 country_code="fr",
