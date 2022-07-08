@@ -1,6 +1,5 @@
 name: Github Pipeline
 on: 
-  workflow_dispatch:
   pull_request:
     branches: 
       - main
@@ -58,26 +57,26 @@ jobs:
 
       - name: Generate Sphinx Documentation 
         run: |
+          pip install -r requirements.txt &&
           pip install sphinx sphinx_rtd_theme &&
-          sphinx-apidoc -fo ./sphinx/ ./alsi/ && 
-          cd ./sphinx && make html
+          sphinx-apidoc -fo ./docs/ ./alsi/ && 
+          cd ./docs && make html
 
       - name: Init new repo and commit genereated files
         run: |
-          cd ./sphinx/_build/html &&
-          git init && touch .nojekyll &&
-          git add -A && 
-          git config --local user.email "action@github.com" &&
-          git config --local user.name "Github Action" &&
-          git commit -m 'deploy' 
+          cd docs/_build/html && git init && touch .nojekyll
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update documentation" -a
 
       - name: Force push the files into the gh-pages branch
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
+          directory: docs/_build/html 
           force: true
-          directory: ./sphinx/_build/html
 
 
   Build-And-Deploy:
