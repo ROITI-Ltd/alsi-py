@@ -49,3 +49,31 @@ asyncio.run(main())
 ```
 
 ### For more information regarding company codes, facility codes and country codes visit: https://alsi.gie.eu/#/api
+
+
+### Contributing
+
+Pull the repository:
+```
+git clone https://github.com/ROITI-Ltd/alsi-py.git
+cd ./alsi-py
+```
+
+Set up your working environment:
+```
+python3 -m venv env
+source env/bin/activate
+```
+
+Install required packages:
+```
+pip3 install -r requirements.txt
+pip3 install -r requirements-dev.txt
+```
+
+Bumping the package version after making changes:
+``` 
+bumpversion major|minor|patch|build 
+``` 
+
+For more general guidelines on contributing see: [Contributing to alsi-py](https://github.com/ROITI-Ltd/alsi-py/blob/main/CONTRIBUTING.md).
