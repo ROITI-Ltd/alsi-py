@@ -2,7 +2,8 @@
 
 Python client for the ALSI API (Aggregated LNG Storage Inventory)
 
-Documentation of the API can be found on: https://alsi.gie.eu/GIE_API_documentation_v004.pdf
+Documentation of the API can be found at: https://alsi.gie.eu/GIE_API_documentation_v004.pdf
+Documentation of the client API can be found at: https://roiti-ltd.github.io/alsi-py/ 
 
 ### Installation
 `python3 -m pip3 install alsi-py `
