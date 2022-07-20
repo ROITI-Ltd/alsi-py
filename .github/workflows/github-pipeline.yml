@@ -1,7 +1,5 @@
 name: Github Pipeline
 on: 
-  workflow_dispatch:
-  push:
   pull_request:
     branches: 
       - main
