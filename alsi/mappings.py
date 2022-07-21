@@ -8,7 +8,7 @@ def retrieve_country(input: Union["Area", str]) -> "Area":
     if isinstance(input, Area):
         return input
     if isinstance(input, str):
-        if Area.has_member(input):
+        if Area.has_member(input.upper()):
             return Area[input]
 
         input = input.capitalize()
@@ -31,18 +31,18 @@ class Area(Enum):
         self._country_name = country_name
 
     @property
-    def name(self):
+    def name(self) -> str:
         return self._country_name
 
     @property
-    def code(self):
+    def code(self) -> str:
         return self.value
 
     @classmethod
-    def has_member(cls, member):
+    def has_member(cls, member) -> bool:
         return member in cls.__members__
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.value
 
     BE = (
