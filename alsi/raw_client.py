@@ -49,8 +49,8 @@ class AlsiRawClient:
             21 digit EIC code of the facility
         company_code : str
             21 digit EIC code of the company
-        country_code : str
-            2 digit country code
+        country_code : Union['Area', str]
+            2 digit country code or the name of the country
         start: Optional[datetime]
             start date
         end: Optional[datetime]
@@ -141,8 +141,8 @@ class AlsiRawClient:
 
         Parameters
         ----------
-        country_code : str
-            2 digit country code
+        country_code : Union['Area', str]
+            2 digit country code or the name of the country
         start: Optional[datetime]
             start date
         end: Optional[datetime]
@@ -186,8 +186,8 @@ class AlsiRawClient:
         ----------
         company_code : str
             21 digic EIC company code
-        country_code : str
-            2 digit country code
+        country_code : Union['Area', str]
+            2 digit country code or the name of the country
         start: Optional[datetime]
             start date
         end: Optional[datetime]

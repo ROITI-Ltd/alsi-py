@@ -1,6 +1,7 @@
-from typing import Optional
+from typing import Optional, Union
 from typing_extensions import Literal
 from .raw_client import AlsiRawClient
+from .mappings import Area
 import pandas as pd
 from datetime import datetime
 
@@ -49,7 +50,7 @@ class AlsiPandasClient(AlsiRawClient):
 
     async def query_agg_data_by_country(
         self,
-        country_code: str,
+        country_code: Union["Area", str],
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
         limit: Optional[int] = 0,
@@ -58,8 +59,8 @@ class AlsiPandasClient(AlsiRawClient):
 
         Parameters
         ----------
-        country_code : str
-            2 digit country code
+        country_code : Union['Area', str]
+            2 digit country code or the name of the country
         start: Optional[datetime]
             start date
         end: Optional[datetime]
@@ -77,7 +78,7 @@ class AlsiPandasClient(AlsiRawClient):
         >>> from alsi.raw_client import AlsiPandasClient
         >>> API_KEY='...'
         >>> client = AlsiPandasClient(api_key=API_KEY)
-        >>> result = await client.query_agg_data_by_country(country_code='be')
+        >>> result = await client.query_agg_data_by_country(country_code=Area.BE)
         """
         json_result = await super().query_agg_data_by_country(
             country_code, start, end, limit
@@ -88,7 +89,7 @@ class AlsiPandasClient(AlsiRawClient):
     async def query_data_by_company_and_country(
         self,
         company_code: str,
-        country_code: str,
+        country_code: Union["Area", str],
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
         limit: Optional[int] = 0,
@@ -99,8 +100,8 @@ class AlsiPandasClient(AlsiRawClient):
         ----------
         company_code : str
             21 digic EIC company code
-        country_code : str
-            2 digit country code
+        country_code : Union['Area', str]
+            2 digit country code or the name of the country
         start: Optional[datetime]
             start date
         end: Optional[datetime]
@@ -131,7 +132,7 @@ class AlsiPandasClient(AlsiRawClient):
         self,
         facility_code: str,
         company_code: str,
-        country_code: str,
+        country_code: Union["Area", str],
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
         limit: Optional[int] = 0,
@@ -144,8 +145,8 @@ class AlsiPandasClient(AlsiRawClient):
             21 digit EIC code of the facility
         company_code : str
             21 digit EIC code of the company
-        country_code : str
-            2 digit country code
+        country_code : Union['Area', str]
+            2 digit country code or the name of the country
         start: Optional[datetime]
             start date
         end: Optional[datetime]
@@ -163,7 +164,7 @@ class AlsiPandasClient(AlsiRawClient):
         >>> from alsi.raw_client import AlsiPandasClient
         >>> API_KEY='...'
         >>> client = AlsiPandasClient(api_key=API_KEY)
-        >>> result = await client.query_data_for_facility(facility_code='18W000000000GVMT', company_code='21X0000000013368', country_code='es*')
+        >>> result = await client.query_data_for_facility(facility_code='18W000000000GVMT', company_code='21X0000000013368', country_code='es')
         """
         json_result = await super().query_data_for_facility(
             facility_code, company_code, country_code, start, end, limit
