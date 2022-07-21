@@ -1,9 +1,10 @@
-from typing import Optional
+from typing import Optional, Union
 from typing_extensions import Literal
 import aiohttp
 from datetime import datetime
 from .exceptions import AccessDeniedException
 from .timefilter import Timefilter
+from .mappings import retrieve_country, Area
 
 
 class AlsiRawClient:
@@ -177,7 +178,7 @@ class AlsiRawClient:
     async def query_data_by_company_and_country(
         self,
         company_code: str,
-        country_code: str,
+        country_code: Union["Area", str],
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
         limit: Optional[int] = 0,
@@ -214,14 +215,13 @@ class AlsiRawClient:
         if not company_code:
             raise TypeError("Company code not provided.")
 
-        if AlsiRawClient.__invalid_country_code(country_code):
-            raise TypeError("Invalid country code format.")
-
         timefilter = Timefilter(start, end, limit)
+
+        country = retrieve_country(country_code)
 
         return await self.__base_request(
             company_code.upper(),
-            country_code.upper(),
+            country.code,
             timefilter=timefilter,
         )
 
