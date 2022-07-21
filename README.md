@@ -2,8 +2,9 @@
 
 Python client for the ALSI API (Aggregated LNG Storage Inventory)
 
-Documentation of the API can be found at: https://alsi.gie.eu/GIE_API_documentation_v004.pdf
-Documentation of the client API can be found at: https://roiti-ltd.github.io/alsi-py/ 
+Documentation of the API can be found on: https://alsi.gie.eu/GIE_API_documentation_v004.pdf
+
+Documentation of the client API can be found on: https://roiti-ltd.github.io/alsi-py/ 
 
 ### Installation
 `python3 -m pip3 install alsi-py `
@@ -16,14 +17,15 @@ The package is split in two clients:
 ```
 from alsi.raw_client import AlsiRawClient
 from alsi.pandas_client import AlsiPandasClient
+from alsi.mappings import Area
 from datetime import datetime
 import asyncio
 
 API_KEY = '<API_KEY>'
 
-country_code = 'DE'
-company_code = '21X000000001368W'
-facility_code = '21W000000000100J'
+country_code = Area.ES # Also could be string: 'ES' or 'Spain'
+company_code = '21X000000001254A'
+facility_code = '21W0000000000370'
 
 async def main():
     client = AlsiRawClient(api_key=API_KEY)
