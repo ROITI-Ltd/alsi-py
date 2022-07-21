@@ -36,7 +36,7 @@ class AlsiRawClient:
         self,
         facility_code: str,
         company_code: str,
-        country_code: str,
+        country_code: Union["Area", str],
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
         limit: Optional[int] = 0,
@@ -77,14 +77,12 @@ class AlsiRawClient:
         if not company_code:
             raise TypeError("Company code not provided.")
 
-        if AlsiRawClient.__invalid_country_code(country_code):
-            raise TypeError("Invalid country code format.")
-
         timefilter = Timefilter(start, end, limit)
 
+        country = retrieve_country(country_code)
         return await self.__base_request(
             facility_code.upper(),
-            country_code.upper(),
+            country.code,
             company_code.upper(),
             timefilter=timefilter,
         )
@@ -134,7 +132,7 @@ class AlsiRawClient:
 
     async def query_agg_data_by_country(
         self,
-        country_code: str,
+        country_code: Union["Area", str],
         start: Optional[datetime] = None,
         end: Optional[datetime] = None,
         limit: Optional[int] = 0,
@@ -165,13 +163,12 @@ class AlsiRawClient:
         >>> result = await client.query_agg_data_by_country(country_code='be')
         """
 
-        if AlsiRawClient.__invalid_country_code(country_code):
-            raise TypeError("Invalid country code format.")
-
         timefilter = Timefilter(start, end, limit)
 
+        country = retrieve_country(country_code)
+
         return await self.__base_request(
-            country_code.upper(),
+            country.code,
             timefilter=timefilter,
         )
 
@@ -251,15 +248,6 @@ class AlsiRawClient:
                     raise AccessDeniedException("Check if API key is invalid.")
 
                 return await res.json()
-
-    @staticmethod
-    def __invalid_country_code(country_code: str) -> bool:
-
-        return (
-            not country_code
-            or len(country_code.strip("*")) > 2
-            or any(not char.isalpha() for char in country_code.strip("*"))
-        )
 
     @staticmethod
     def __invalid_timefilter(timefilter: tuple) -> bool:
