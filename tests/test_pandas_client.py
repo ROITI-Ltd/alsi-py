@@ -1,5 +1,7 @@
 from alsi.pandas_client import AlsiPandasClient
 import pytest, asyncio, os, pytest_asyncio
+from alsi.exceptions import InvalidCountryException
+from alsi.mappings import Area
 
 API_KEY = os.getenv("ALSI_KEY")
 
@@ -44,13 +46,15 @@ class TestPandasClient:
     @pytest.mark.asyncio
     async def test_query_by_country(self, client):
 
-        with pytest.raises(TypeError):
+        with pytest.raises(InvalidCountryException):
             await client[1].query_agg_data_by_country("invalid_country")
 
         with pytest.raises(TypeError):
-            await client[1].query_agg_data_by_country("be", limit="das")
+            await client[1].query_agg_data_by_country(
+                country_code="be", limit="das"
+            )
 
-        await client[0].query_agg_data_by_country("be")
+        await client[0].query_agg_data_by_country(country_code=Area.BE)
 
     @pytest.mark.asyncio
     async def test_query_by_company_and_country(self, client):
@@ -58,7 +62,7 @@ class TestPandasClient:
             await client[1].query_data_by_company_and_country()
 
         await client[0].query_data_by_company_and_country(
-            country_code="be", company_code="21X000000001006T"
+            country_code="belgium", company_code="21X000000001006T"
         )
 
     @pytest.mark.asyncio
