@@ -1,5 +1,6 @@
 from alsi.raw_client import AlsiRawClient
 import pytest, asyncio, os, pytest_asyncio
+from alsi.exceptions import InvalidCountryException
 
 
 API_KEY = os.getenv("ALSI_KEY")
@@ -44,7 +45,7 @@ class TestRawClient:
                 company_code="21X0000000010679",
             )
 
-        with pytest.raises(TypeError):
+        with pytest.raises(InvalidCountryException):
             await client[1].query_data_for_facility(
                 facility_code="63W631527814486R",
                 country_code="zzz",
@@ -60,13 +61,15 @@ class TestRawClient:
 
     @pytest.mark.asyncio
     async def test_query_by_country(self, client):
-        with pytest.raises(TypeError):
+        with pytest.raises(InvalidCountryException):
             await client[1].query_agg_data_by_country("invalid_country")
 
         with pytest.raises(TypeError):
-            await client[1].query_agg_data_by_country("be", limit="das")
+            await client[1].query_agg_data_by_country(
+                country_code="be", limit="das"
+            )
 
-        await client[0].query_agg_data_by_country("be")
+        await client[0].query_agg_data_by_country(country_code="be")
 
     @pytest.mark.asyncio
     async def test_query_by_company_and_country(self, client):
