@@ -91,3 +91,7 @@ bumpversion major|minor|patch|build
 ``` 
 
 For more general guidelines on contributing see: [Contributing to alsi-py](https://github.com/ROITI-Ltd/alsi-py/blob/main/CONTRIBUTING.md).
+
+### Inspiration
+
+Many thanks to the [entsoe-py](https://github.com/EnergieID/entsoe-py) library for serving as inspiration for this library.

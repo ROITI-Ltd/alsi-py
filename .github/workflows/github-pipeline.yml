@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: 
       - main
+  push:
+    branches:
+      - main
 
 
 jobs:
@@ -47,6 +50,7 @@ jobs:
         python-version: [3.7]
         os: ['ubuntu-latest']
     runs-on: ${{ matrix.os }}
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
