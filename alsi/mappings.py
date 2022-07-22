@@ -9,10 +9,13 @@ def retrieve_country(input: Union["Area", str]) -> "Area":
         return input
     if isinstance(input, str):
         if Area.has_member(input.upper()):
-            return Area[input]
+            return Area[input.upper()]
 
-        input = input.capitalize()
-        check_country = [area for area in Area if area._country_name == input]
+        check_country = [
+            area
+            for area in Area
+            if area._country_name.lower() == input.lower()
+        ]
 
         if check_country:
             return check_country[0]
@@ -53,13 +56,21 @@ class Area(Enum):
         "ES",
         "Spain",
     )
+    ES_ = (
+        "ES*",
+        "Spain*",
+    )
     FR = (
         "FR",
         "France",
     )
-    GB = (
+    GB_PRE_BREXIT = (
         "GB",
-        "Great Britain",
+        "Great Britain (Pre Brexit)",
+    )
+    GB_POST_BREXIT = (
+        "GB*",
+        "Great Britain (Post Brexit)",
     )
     GR = (
         "GR",
