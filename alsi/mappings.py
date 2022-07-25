@@ -14,6 +14,7 @@ def retrieve_country(input: Union["Area", str]) -> "Area":
             area
             for area in Area
             if area._country_name.lower() == input.lower()
+            or area.code.lower() == input.lower()
         ]
 
         if check_country:
