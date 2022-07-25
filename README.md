@@ -54,13 +54,20 @@ asyncio.run(main())
 ### For more information regarding company codes, facility codes and country codes visit: https://alsi.gie.eu/#/api
 
 ### Running unit tests
-Tell pytest where to look for unit tests and create env for ALSI API key
-```
-export PYTHONPATH=./alsi
-export ALSI_KEY='...'
-```
+#### Tell pytest where to look for unit tests and create env for ALSI API key
+* For UNIX machines
+    ```
+    export PYTHONPATH=./alsi
+    export ALSI_KEY='...'
+    ```
 
-Run unit tests in coverage mode
+* For Windows machines
+    ```
+    $env:PYTHONPATH='./alsi'
+    $env:ALSI_KEY='...'
+    ```
+
+#### Run unit tests in coverage mode
 ```
 python -m pytest ./tests --import-mode=append --cov
 ```
@@ -74,10 +81,21 @@ cd ./alsi-py
 ```
 
 Set up your working environment:
-```
-python3 -m venv env
-source env/bin/activate
-```
+1. Create virtual environment
+    ```
+     python3 -m venv env
+    ```
+2. Activate the virtual environment
+
+    * For UNIX machines
+        ```
+        source env/bin/activate
+        ```
+
+    * For Windows machines
+        ```
+        ./env/Scripts/activate
+        ```
 
 Install required packages:
 ```
