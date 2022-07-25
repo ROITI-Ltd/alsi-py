@@ -22,7 +22,9 @@ def retrieve_country(input: Union["Area", str]) -> "Area":
         else:
             raise InvalidCountryException("Invalid Country")
 
-    raise TypeError("Country input parameter can only be of type string or Area.")
+    raise TypeError(
+        "Country input parameter can only be of type string or Area."
+    )
 
 
 class Area(Enum):
