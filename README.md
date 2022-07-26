@@ -9,7 +9,7 @@ Documentation of the client API can be found on: <https://roiti-ltd.github.io/al
 ### Installation
 
 ```sh
-python3 -m pip3 install alsi-py
+python -m pip install alsi-py
 ```
 
 ### Usage
@@ -70,21 +70,21 @@ asyncio.run(main())
 
 Tell pytest where to look for unit tests and create env for ALSI API key
 
-* On Unix
-  
-    ```bash
-    export PYTHONPATH=./alsi
-    export ALSI_KEY='...'
-    ```
+- On Unix
 
-* On Windows
-  
-    ```powershell
-    $env:PYTHONPATH='./alsi'
-    $env:ALSI_KEY='...'
-    ```
+  ```sh
+  export PYTHONPATH=./alsi
+  export ALSI_KEY='...'
+  ```
 
-#### Run unit tests in coverage mode
+- On Windows
+
+  ```powershell
+  $env:PYTHONPATH='./alsi'
+  $env:ALSI_KEY='<API_KEY>'
+  ```
+
+Run unit tests in coverage mode
 
 ```sh
 python -m pytest ./tests --import-mode=append --cov
@@ -103,34 +103,35 @@ Set up your working environment:
 
 1. Create virtual environment
 
-    ```sh
-    python3 -m venv env
-    ```
+   ```sh
+   python -m venv env
+   ```
 
 2. Activate the virtual environment
-   * On UNIX
 
-        ```bash
-        source env/bin/activate
-        ```
+   - On UNIX
 
-   * On Windows
-  
-        ```sh
-        ./env/Scripts/activate
-        ```
+     ```sh
+     source env/bin/activate
+     ```
+
+   - On Windows
+
+     ```powershell
+     .\env\Scripts\activate
+     ```
 
 Install required packages:
 
 ```sh
-pip3 install -r requirements.txt
-pip3 install -r requirements-dev.txt
+python -m pip install -r requirements.txt
+python -m pip install -r requirements-dev.txt
 ```
 
 Bumping the package version after making changes:
 
 ```sh
-bumpversion major|minor|patch|build 
+bumpversion major|minor|patch|build
 ```
 
 For more general guidelines on contributing see: [Contributing to alsi-py](https://github.com/ROITI-Ltd/alsi-py/blob/main/CONTRIBUTING.md).
