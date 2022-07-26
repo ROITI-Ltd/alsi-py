@@ -32,8 +32,6 @@ country_code = Area.ES  # Also could be string: 'ES' or 'Spain'
 company_code = "21X000000001254A"
 facility_code = "21W0000000000370"
 
-
-
 async def main():
     client = AlsiRawClient(api_key=API_KEY)
     # Functions that return JSON.
