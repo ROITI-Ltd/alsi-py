@@ -26,26 +26,17 @@ from alsi.mappings import Area
 from datetime import datetime
 import asyncio
 
-<<<<<<< HEAD
 API_KEY = "<API_KEY>"
 
 country_code = Area.ES  # Also could be string: 'ES' or 'Spain'
 company_code = "21X000000001254A"
 facility_code = "21W0000000000370"
 
-=======
-
-API_KEY = '<API_KEY>'
-country_code = Area.ES # Also could be string: 'ES' or 'Spain'
-company_code = '21X000000001254A'
-facility_code = '21W0000000000370'
->>>>>>> testing
 
 
 async def main():
     client = AlsiRawClient(api_key=API_KEY)
     # Functions that return JSON.
-<<<<<<< HEAD
     await client.query_data_for_facility(facility_code, company_code, country_code)
     await client.query_agg_data_for_europe_or_noneurope(europe="eu")
     await client.query_agg_data_by_country(country_code="BE")
@@ -59,14 +50,6 @@ async def main():
         limit=10,
     )
 
-=======
-    client.query_data_for_facility(facility_code, company_code, country_code)
-    client.query_agg_data_for_europe_or_noneurope(europe='eu')
-    client.query_agg_data_by_country(contry_code='BE')
-    client.query_data_by_company_and_country(company_code, country_code)
-    # Filter results by time
-    client.query_agg_data_by_country(country_code, start=datetime(2017,1,1), end=datetime(2018,1,1), limit=10)
->>>>>>> testing
     # Create pandas client. All functions are the same as the raw client.
     pandas_client = AlsiPandasClient(api_key=API_KEY)
     # In the end of the code, make sure to close the client session:
@@ -74,13 +57,8 @@ async def main():
     # or
     await pandas_client.close_session()
 
-<<<<<<< HEAD
 loop = asyncio.new_event_loop()
 loop.run_until_complete(main())
-=======
-
-asyncio.run(main())
->>>>>>> testing
 ```
 
 ### For more information regarding company codes, facility codes and country codes visit: <https://alsi.gie.eu/#/api>
