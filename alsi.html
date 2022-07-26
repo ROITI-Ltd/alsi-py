@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>alsi package &mdash; alsi-py  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="alsi" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> alsi-py
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">alsi</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">alsi package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-alsi.exceptions">alsi.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-alsi.mappings">alsi.mappings module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-alsi.pandas_client">alsi.pandas_client module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-alsi.raw_client">alsi.raw_client module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-alsi.timefilter">alsi.timefilter module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-alsi">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">alsi-py</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">alsi</a> &raquo;</li>
+      <li>alsi package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/alsi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="alsi-package">
+<h1>alsi package<a class="headerlink" href="#alsi-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-alsi.exceptions">
+<span id="alsi-exceptions-module"></span><h2>alsi.exceptions module<a class="headerlink" href="#module-alsi.exceptions" title="Permalink to this heading"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="alsi.exceptions.AccessDeniedException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">alsi.exceptions.</span></span><span class="sig-name descname"><span class="pre">AccessDeniedException</span></span><a class="headerlink" href="#alsi.exceptions.AccessDeniedException" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="alsi.exceptions.InvalidCountryException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">alsi.exceptions.</span></span><span class="sig-name descname"><span class="pre">InvalidCountryException</span></span><a class="headerlink" href="#alsi.exceptions.InvalidCountryException" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</section>
+<section id="module-alsi.mappings">
+<span id="alsi-mappings-module"></span><h2>alsi.mappings module<a class="headerlink" href="#module-alsi.mappings" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="alsi.mappings.Area">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">alsi.mappings.</span></span><span class="sig-name descname"><span class="pre">Area</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#alsi.mappings.Area" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
+<p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.BE">
+<span class="sig-name descname"><span class="pre">BE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'BE'</span></em><a class="headerlink" href="#alsi.mappings.Area.BE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.ES">
+<span class="sig-name descname"><span class="pre">ES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ES'</span></em><a class="headerlink" href="#alsi.mappings.Area.ES" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.ES_">
+<span class="sig-name descname"><span class="pre">ES_</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'ES*'</span></em><a class="headerlink" href="#alsi.mappings.Area.ES_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.FR">
+<span class="sig-name descname"><span class="pre">FR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FR'</span></em><a class="headerlink" href="#alsi.mappings.Area.FR" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.GB_POST_BREXIT">
+<span class="sig-name descname"><span class="pre">GB_POST_BREXIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GB*'</span></em><a class="headerlink" href="#alsi.mappings.Area.GB_POST_BREXIT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.GB_PRE_BREXIT">
+<span class="sig-name descname"><span class="pre">GB_PRE_BREXIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GB'</span></em><a class="headerlink" href="#alsi.mappings.Area.GB_PRE_BREXIT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.GR">
+<span class="sig-name descname"><span class="pre">GR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GR'</span></em><a class="headerlink" href="#alsi.mappings.Area.GR" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.HR">
+<span class="sig-name descname"><span class="pre">HR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HR'</span></em><a class="headerlink" href="#alsi.mappings.Area.HR" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.IT">
+<span class="sig-name descname"><span class="pre">IT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'IT'</span></em><a class="headerlink" href="#alsi.mappings.Area.IT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.LT">
+<span class="sig-name descname"><span class="pre">LT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LT'</span></em><a class="headerlink" href="#alsi.mappings.Area.LT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.NL">
+<span class="sig-name descname"><span class="pre">NL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'NL'</span></em><a class="headerlink" href="#alsi.mappings.Area.NL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.PL">
+<span class="sig-name descname"><span class="pre">PL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PL'</span></em><a class="headerlink" href="#alsi.mappings.Area.PL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.mappings.Area.PT">
+<span class="sig-name descname"><span class="pre">PT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PT'</span></em><a class="headerlink" href="#alsi.mappings.Area.PT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="alsi.mappings.Area.code">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">code</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#alsi.mappings.Area.code" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.mappings.Area.has_member">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">has_member</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">member</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#alsi.mappings.Area.has_member" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="alsi.mappings.retrieve_country">
+<span class="sig-prename descclassname"><span class="pre">alsi.mappings.</span></span><span class="sig-name descname"><span class="pre">retrieve_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#alsi.mappings.Area" title="alsi.mappings.Area"><span class="pre">Area</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#alsi.mappings.Area" title="alsi.mappings.Area"><span class="pre">Area</span></a></span></span><a class="headerlink" href="#alsi.mappings.retrieve_country" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-alsi.pandas_client">
+<span id="alsi-pandas-client-module"></span><h2>alsi.pandas_client module<a class="headerlink" href="#module-alsi.pandas_client" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="alsi.pandas_client.AlsiPandasClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">alsi.pandas_client.</span></span><span class="sig-name descname"><span class="pre">AlsiPandasClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ClientSession</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#alsi.pandas_client.AlsiPandasClient" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#alsi.raw_client.AlsiRawClient" title="alsi.raw_client.AlsiRawClient"><code class="xref py py-class docutils literal notranslate"><span class="pre">AlsiRawClient</span></code></a></p>
+<p>Client to perform API calls and return dataframes for ALSI API: <a class="reference external" href="https://alsi.gie.eu/#/api">https://alsi.gie.eu/#/api</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.pandas_client.AlsiPandasClient.query_agg_data_by_country">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_agg_data_by_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">country_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#alsi.mappings.Area" title="alsi.mappings.Area"><span class="pre">Area</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#alsi.pandas_client.AlsiPandasClient.query_agg_data_by_country" title="Permalink to this definition"></a></dt>
+<dd><p>Aggregated historical data export for a specific country</p>
+<dl class="simple">
+<dt>country_code<span class="classifier">Union[‘Area’, str]</span></dt><dd><p>2 digit country code or the name of the country</p>
+</dd>
+<dt>start: Optional[datetime]</dt><dd><p>start date</p>
+</dd>
+<dt>end: Optional[datetime]</dt><dd><p>end date</p>
+</dd>
+<dt>limit: Optional[int]</dt><dd><p>limit the number of results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>if country code is invalid</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">alsi.raw_client</span> <span class="kn">import</span> <span class="n">AlsiPandasClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">API_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">AlsiPandasClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_agg_data_by_country</span><span class="p">(</span><span class="n">country_code</span><span class="o">=</span><span class="n">Area</span><span class="o">.</span><span class="n">BE</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.pandas_client.AlsiPandasClient.query_agg_data_for_europe_or_noneurope">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_agg_data_for_europe_or_noneurope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">europe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">typing_extensions.Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">ne</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">eu</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#alsi.pandas_client.AlsiPandasClient.query_agg_data_for_europe_or_noneurope" title="Permalink to this definition"></a></dt>
+<dd><p>Aggregated historical data export for Europe or Non Europe</p>
+<dl class="simple">
+<dt>europe<span class="classifier">Literal[‘ne’, ‘eu’]</span></dt><dd><p>‘ne’ for noneurope, eu for europe</p>
+</dd>
+<dt>start: Optional[datetime]</dt><dd><p>start date</p>
+</dd>
+<dt>end: Optional[datetime]</dt><dd><p>end date</p>
+</dd>
+<dt>limit: Optional[int]</dt><dd><p>limit the number of results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>if europe: str parameter is not provided or invalid</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">alsi.raw_client</span> <span class="kn">import</span> <span class="n">AlsiPandasClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">API_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">AlsiPandasClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_agg_data_for_europe_or_noneurope</span><span class="p">(</span><span class="n">europe</span><span class="o">=</span><span class="s1">&#39;eu&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.pandas_client.AlsiPandasClient.query_data_by_company_and_country">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_data_by_company_and_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">company_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#alsi.mappings.Area" title="alsi.mappings.Area"><span class="pre">Area</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#alsi.pandas_client.AlsiPandasClient.query_data_by_company_and_country" title="Permalink to this definition"></a></dt>
+<dd><p>Historical data export for a specific company within a country</p>
+<dl class="simple">
+<dt>company_code<span class="classifier">str</span></dt><dd><p>21 digic EIC company code</p>
+</dd>
+<dt>country_code<span class="classifier">Union[‘Area’, str]</span></dt><dd><p>2 digit country code or the name of the country</p>
+</dd>
+<dt>start: Optional[datetime]</dt><dd><p>start date</p>
+</dd>
+<dt>end: Optional[datetime]</dt><dd><p>end date</p>
+</dd>
+<dt>limit: Optional[int]</dt><dd><p>limit the number of results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>if country code or company code is invalid</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">alsi.raw_client</span> <span class="kn">import</span> <span class="n">AlsiPandasClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">API_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">AlsiPandasClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_data_by_company_and_country</span><span class="p">(</span><span class="n">company_code</span><span class="o">=</span><span class="s1">&#39;21X000000001006T&#39;</span><span class="p">,</span> <span class="n">country_code</span><span class="o">=</span><span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.pandas_client.AlsiPandasClient.query_data_for_facility">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_data_for_facility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">facility_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">company_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#alsi.mappings.Area" title="alsi.mappings.Area"><span class="pre">Area</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DataFrame</span></span></span><a class="headerlink" href="#alsi.pandas_client.AlsiPandasClient.query_data_for_facility" title="Permalink to this definition"></a></dt>
+<dd><p>Query historical data export for a specific facility from a company within a country</p>
+<dl class="simple">
+<dt>facility_code<span class="classifier">str</span></dt><dd><p>21 digit EIC code of the facility</p>
+</dd>
+<dt>company_code<span class="classifier">str</span></dt><dd><p>21 digit EIC code of the company</p>
+</dd>
+<dt>country_code<span class="classifier">Union[‘Area’, str]</span></dt><dd><p>2 digit country code or the name of the country</p>
+</dd>
+<dt>start: Optional[datetime]</dt><dd><p>start date</p>
+</dd>
+<dt>end: Optional[datetime]</dt><dd><p>end date</p>
+</dd>
+<dt>limit: Optional[int]</dt><dd><p>limit the number of results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>if country code, company code or facility code is invalid</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">alsi.raw_client</span> <span class="kn">import</span> <span class="n">AlsiPandasClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">API_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">AlsiPandasClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_data_for_facility</span><span class="p">(</span><span class="n">facility_code</span><span class="o">=</span><span class="s1">&#39;18W000000000GVMT&#39;</span><span class="p">,</span> <span class="n">company_code</span><span class="o">=</span><span class="s1">&#39;21X0000000013368&#39;</span><span class="p">,</span> <span class="n">country_code</span><span class="o">=</span><span class="s1">&#39;es&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-alsi.raw_client">
+<span id="alsi-raw-client-module"></span><h2>alsi.raw_client module<a class="headerlink" href="#module-alsi.raw_client" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="alsi.raw_client.AlsiRawClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">alsi.raw_client.</span></span><span class="sig-name descname"><span class="pre">AlsiRawClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">session</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">ClientSession</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#alsi.raw_client.AlsiRawClient" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Client to perform API calls and return JSON data for ALSI API: <a class="reference external" href="https://alsi.gie.eu/#/api">https://alsi.gie.eu/#/api</a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="alsi.raw_client.AlsiRawClient.BASE_URL">
+<span class="sig-name descname"><span class="pre">BASE_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://alsi.gie.eu/api/data'</span></em><a class="headerlink" href="#alsi.raw_client.AlsiRawClient.BASE_URL" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.raw_client.AlsiRawClient.close_session">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">close_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#alsi.raw_client.AlsiRawClient.close_session" title="Permalink to this definition"></a></dt>
+<dd><p>Close the session.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.raw_client.AlsiRawClient.query_agg_data_by_country">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_agg_data_by_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">country_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#alsi.mappings.Area" title="alsi.mappings.Area"><span class="pre">Area</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#alsi.raw_client.AlsiRawClient.query_agg_data_by_country" title="Permalink to this definition"></a></dt>
+<dd><p>Aggregated historical data export for a specific country</p>
+<dl class="simple">
+<dt>country_code<span class="classifier">Union[‘Area’, str]</span></dt><dd><p>2 digit country code or the name of the country</p>
+</dd>
+<dt>start: Optional[datetime]</dt><dd><p>start date</p>
+</dd>
+<dt>end: Optional[datetime]</dt><dd><p>end date</p>
+</dd>
+<dt>limit: Optional[int]</dt><dd><p>limit the number of results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>if country code is invalid</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">alsi.raw_client</span> <span class="kn">import</span> <span class="n">AlsiRawClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">API_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">AlsiRawClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_agg_data_by_country</span><span class="p">(</span><span class="n">country_code</span><span class="o">=</span><span class="s1">&#39;be&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.raw_client.AlsiRawClient.query_agg_data_for_europe_or_noneurope">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_agg_data_for_europe_or_noneurope</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">europe</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">typing_extensions.Literal</span><span class="p"><span class="pre">[</span></span><span class="pre">eu</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ne</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#alsi.raw_client.AlsiRawClient.query_agg_data_for_europe_or_noneurope" title="Permalink to this definition"></a></dt>
+<dd><p>Aggregated historical data export for Europe or Non Europe</p>
+<dl class="simple">
+<dt>europe<span class="classifier">Literal[‘eu’, ‘ne’]</span></dt><dd><p>‘ne’ for noneurope, eu for europe</p>
+</dd>
+<dt>start: Optional[datetime]</dt><dd><p>start date</p>
+</dd>
+<dt>end: Optional[datetime]</dt><dd><p>end date</p>
+</dd>
+<dt>limit: Optional[int]</dt><dd><p>limit the number of results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>if europe: str parameter is not provided or invalid</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">alsi.raw_client</span> <span class="kn">import</span> <span class="n">AlsiRawClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">API_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">AlsiRawClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_agg_data_for_europe_or_noneurope</span><span class="p">(</span><span class="n">europe</span><span class="o">=</span><span class="s1">&#39;eu&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.raw_client.AlsiRawClient.query_data_by_company_and_country">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_data_by_company_and_country</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">company_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#alsi.mappings.Area" title="alsi.mappings.Area"><span class="pre">Area</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#alsi.raw_client.AlsiRawClient.query_data_by_company_and_country" title="Permalink to this definition"></a></dt>
+<dd><p>Historical data export for a specific company within a country</p>
+<dl class="simple">
+<dt>company_code<span class="classifier">str</span></dt><dd><p>21 digic EIC company code</p>
+</dd>
+<dt>country_code<span class="classifier">Union[‘Area’, str]</span></dt><dd><p>2 digit country code or the name of the country</p>
+</dd>
+<dt>start: Optional[datetime]</dt><dd><p>start date</p>
+</dd>
+<dt>end: Optional[datetime]</dt><dd><p>end date</p>
+</dd>
+<dt>limit: Optional[int]</dt><dd><p>limit the number of results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>if country code or company code is invalid</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">alsi.raw_client</span> <span class="kn">import</span> <span class="n">AlsiRawClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">API_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">AlsiRawClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_data_by_company_and_country</span><span class="p">(</span><span class="n">company_code</span><span class="o">=</span><span class="s1">&#39;21X000000001006T&#39;</span><span class="p">,</span> <span class="n">country_code</span><span class="o">=</span><span class="s1">&#39;be&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="alsi.raw_client.AlsiRawClient.query_data_for_facility">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">query_data_for_facility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">facility_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">company_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">country_code</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#alsi.mappings.Area" title="alsi.mappings.Area"><span class="pre">Area</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">datetime</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#alsi.raw_client.AlsiRawClient.query_data_for_facility" title="Permalink to this definition"></a></dt>
+<dd><p>Query historical data export for a specific facility from a company within a country</p>
+<dl class="simple">
+<dt>facility_code<span class="classifier">str</span></dt><dd><p>21 digit EIC code of the facility</p>
+</dd>
+<dt>company_code<span class="classifier">str</span></dt><dd><p>21 digit EIC code of the company</p>
+</dd>
+<dt>country_code<span class="classifier">Union[‘Area’, str]</span></dt><dd><p>2 digit country code or the name of the country</p>
+</dd>
+<dt>start: Optional[datetime]</dt><dd><p>start date</p>
+</dd>
+<dt>end: Optional[datetime]</dt><dd><p>end date</p>
+</dd>
+<dt>limit: Optional[int]</dt><dd><p>limit the number of results</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TypeError</dt><dd><p>if country code, company code or facility code is invalid</p>
+</dd>
+</dl>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">alsi.raw_client</span> <span class="kn">import</span> <span class="n">AlsiRawClient</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">API_KEY</span><span class="o">=</span><span class="s1">&#39;...&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client</span> <span class="o">=</span> <span class="n">AlsiRawClient</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">API_KEY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">client</span><span class="o">.</span><span class="n">query_data_for_facility</span><span class="p">(</span><span class="n">facility_code</span><span class="o">=</span><span class="s1">&#39;18W000000000GVMT&#39;</span><span class="p">,</span> <span class="n">company_code</span><span class="o">=</span><span class="s1">&#39;21X0000000013368&#39;</span><span class="p">,</span> <span class="n">country_code</span><span class="o">=</span><span class="s1">&#39;es*&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-alsi.timefilter">
+<span id="alsi-timefilter-module"></span><h2>alsi.timefilter module<a class="headerlink" href="#module-alsi.timefilter" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="alsi.timefilter.Timefilter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">alsi.timefilter.</span></span><span class="sig-name descname"><span class="pre">Timefilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#alsi.timefilter.Timefilter" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">tuple</span></code></p>
+<dl class="py property">
+<dt class="sig sig-object py" id="alsi.timefilter.Timefilter.end">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">end</span></span><a class="headerlink" href="#alsi.timefilter.Timefilter.end" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="alsi.timefilter.Timefilter.limit">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">limit</span></span><a class="headerlink" href="#alsi.timefilter.Timefilter.limit" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="alsi.timefilter.Timefilter.start">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">start</span></span><a class="headerlink" href="#alsi.timefilter.Timefilter.start" title="Permalink to this definition"></a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-alsi">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-alsi" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="alsi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Roiti LTD.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
