@@ -9,7 +9,8 @@ from gie.agsi_mappings import (
     lookup_storage_agsi,
     lookup_company,
     AGSICompany,
-    AGSICountry, lookup_country_agsi,
+    AGSICountry,
+    lookup_country_agsi,
 )
 from gie.alsi_mappings import (
     ALSITerminal,
@@ -19,7 +20,7 @@ from gie.alsi_mappings import (
     ALSICountry,
     lookup_country_alsi,
 )
-from gie.exceptions import ApiError
+from gie.exceptions import ApiError, NoMatchingDataError
 
 
 class APIType(str, enum.Enum):
@@ -57,7 +58,9 @@ class GieRawClient:
         start if type(start) == pd.Timestamp else pd.Timestamp(start)
         end if type(end) == pd.Timestamp else pd.Timestamp(end)
 
-        async with self.session.get(token.value + url, params={"from": start, "till": end}) as resp:
+        async with self.session.get(
+                token.value + url, params={"from": start, "till": end}
+        ) as resp:
             return await resp.json()
 
     async def query_gas_storage(
@@ -118,3 +121,52 @@ class GieRawClient:
         """Close the session."""
         if self.session:
             await self.session.close()
+
+
+class GiePandasClient(GieRawClient):
+    def agsi_to_dataframe(self, data):
+        data = data.json()
+        df = pd.DataFrame(data=data).drop(columns=['code', 'url', 'info'])
+
+        if not df:
+            raise NoMatchingDataError
+
+        df['gasDayStart'] = pd.to_datetime(df['gasDayStart'])
+        df = df.set_index('gasDayStart')
+        return df
+
+    def query_gas_storage(self, storage: Union[AGSIStorage, str],
+                          start: Union[pd.Timestamp, str], end: Union[pd.Timestamp, str]) -> pd.DataFrame:
+        return self.agsi_to_dataframe(
+            super().query_gas_storage(storage=storage, start=start, end=end)
+        )
+
+    def query_gas_company(self, company: Union[AGSIStorage, str],
+                          start: Union[pd.Timestamp, str], end: Union[pd.Timestamp, str]) -> pd.DataFrame:
+        return self.agsi_to_dataframe(
+            super().query_gas_company(company=company, start=start, end=end)
+        )
+
+    def query_gas_country(self, country: Union[AGSICountry, str],
+                          start: Union[pd.Timestamp, str], end: Union[pd.Timestamp, str]) -> pd.DataFrame:
+        return self.agsi_to_dataframe(
+            super().query_gas_country(country=country, start=start, end=end)
+        )
+
+    def query_lng_terminal(self, terminal: Union[ALSITerminal, str],
+                           start: Union[pd.Timestamp, str], end: Union[pd.Timestamp, str]) -> pd.DataFrame:
+        return self.agsi_to_dataframe(
+            super().query_lng_terminal(terminal=terminal, start=start, end=end)
+        )
+
+    def query_lng_lso(self, lso: Union[ALSILSO, str],
+                      start: Union[pd.Timestamp, str], end: Union[pd.Timestamp, str]) -> pd.DataFrame:
+        return self.agsi_to_dataframe(
+            super().query_lng_lso(lso=lso, start=start, end=end)
+        )
+
+    def query_lng_country(self, country: Union[ALSICountry, str],
+                          start: Union[pd.Timestamp, str], end: Union[pd.Timestamp, str]) -> pd.DataFrame:
+        return self.agsi_to_dataframe(
+            super().query_lng_country(country=country, start=start, end=end)
+        )

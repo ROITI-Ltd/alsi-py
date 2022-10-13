@@ -2,41 +2,41 @@ import enum
 from typing import Union
 
 
-def lookup_lso(s: Union["ALSILSO", str]) -> "ALSILSO":
-    if isinstance(s, ALSILSO):
-        return s
+def lookup_lso(input_string: Union["ALSILSO", str]) -> "ALSILSO":
+    if isinstance(input_string, ALSILSO):
+        return input_string
     else:
         try:
-            return ALSILSO[s]
+            return ALSILSO[input_string]
         except KeyError:
             try:
-                return [obj for obj in ALSILSO if obj.value == s][0]
+                return [obj for obj in ALSILSO if obj.value == input_string][0]
             except IndexError:
                 raise ValueError("Invalid lso string")
 
 
-def lookup_terminal(s: Union["ALSITerminal", str]) -> "ALSITerminal":
-    if isinstance(s, ALSITerminal):
-        return s
+def lookup_terminal(input_string: Union["ALSITerminal", str]) -> "ALSITerminal":
+    if isinstance(input_string, ALSITerminal):
+        return input_string
     else:
         try:
-            return ALSITerminal[s]
+            return ALSITerminal[input_string]
         except KeyError:
             try:
-                return [obj for obj in ALSITerminal if obj.value == s][0]
+                return [obj for obj in ALSITerminal if obj.value == input_string][0]
             except IndexError:
                 raise ValueError("Invalid terminal string")
 
 
-def lookup_country_alsi(s: Union["ALSICountry", str]) -> "ALSICountry":
-    if isinstance(s, ALSICountry):
-        return s
+def lookup_country_alsi(input_string: Union["ALSICountry", str]) -> "ALSICountry":
+    if isinstance(input_string, ALSICountry):
+        return input_string
     else:
         try:
-            return ALSICountry[s]
+            return ALSICountry[input_string]
         except KeyError:
             try:
-                return [obj for obj in ALSICountry if obj.value == s][0]
+                return [obj for obj in ALSICountry if obj.value == input_string][0]
             except IndexError:
                 raise ValueError("Invalid country string")
 
@@ -46,7 +46,7 @@ class ALSICountry(enum.Enum):
     ENUM contains 2 things: code and full name
     """
 
-    def __new__(cls, *args, **kwds):
+    def __new__(cls, *args, **kwargs):
         obj = object.__new__(cls)
         obj._value_ = args[0]
         return obj
@@ -85,7 +85,7 @@ class ALSILSO(enum.Enum):
     ENUM containing 2 things about an Area: code, country
     """
 
-    def __new__(cls, *args, **kwds):
+    def __new__(cls, *args, **kwargs):
         obj = object.__new__(cls)
         obj._value_ = args[0]
         return obj
@@ -134,7 +134,7 @@ class ALSITerminal(enum.Enum):
     ENUM containing 3 things about an Area: code, country, code company
     """
 
-    def __new__(cls, *args, **kwds):
+    def __new__(cls, *args, **kwargs):
         obj = object.__new__(cls)
         obj._value_ = args[0]
         return obj

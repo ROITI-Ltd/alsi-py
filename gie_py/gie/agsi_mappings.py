@@ -2,43 +2,43 @@ import enum
 from typing import Union
 
 
-def lookup_company(s: Union["AGSICompany", str]) -> "AGSICompany":
-    if isinstance(s, AGSICompany):
-        return s
+def lookup_company(input_string: Union["AGSICompany", str]) -> "AGSICompany":
+    if isinstance(input_string, AGSICompany):
+        return input_string
     else:
         try:
-            return AGSICompany[s]
+            return AGSICompany[input_string]
         except KeyError:
             try:
-                return [obj for obj in AGSICompany if obj.value == s][0]
+                return [obj for obj in AGSICompany if obj.value == input_string][0]
             except IndexError:
                 raise ValueError("The company string provided is invalid!")
 
 
-def lookup_storage_agsi(s: Union["AGSIStorage", str]) -> "AGSIStorage":
-    if isinstance(s, AGSIStorage):
-        return s
-    else:  # It is a string
+def lookup_storage_agsi(input_string: Union["AGSIStorage", str]) -> "AGSIStorage":
+    if isinstance(input_string, AGSIStorage):
+        return input_string
+    else:
         try:
-            # do lookup
-            return AGSIStorage[s]
+
+            return AGSIStorage[input_string]
         except KeyError:
-            # It is not, it may be a direct code
+
             try:
-                return [obj for obj in AGSIStorage if obj.value == s][0]
+                return [obj for obj in AGSIStorage if obj.value == input_string][0]
             except IndexError:
                 raise ValueError("The storage string provided is invalid!")
 
 
-def lookup_country_agsi(s: Union["AGSICountry", str]) -> "AGSICountry":
-    if isinstance(s, AGSICountry):
-        return s
+def lookup_country_agsi(input_string: Union["AGSICountry", str]) -> "AGSICountry":
+    if isinstance(input_string, AGSICountry):
+        return input_string
     else:
         try:
-            return AGSICountry[s]
+            return AGSICountry[input_string]
         except KeyError:
             try:
-                return [obj for obj in AGSICountry if obj.value == s][0]
+                return [obj for obj in AGSICountry if obj.value == input_string][0]
             except IndexError:
                 raise ValueError("The country string provided is invalid!")
 
@@ -48,7 +48,7 @@ class AGSICountry(enum.Enum):
     ENUM contains 2 things: code and full name
     """
 
-    def __new__(cls, *args, **kwds):
+    def __new__(cls, *args, **kwargs):
         obj = object.__new__(cls)
         obj._value_ = args[0]
         return obj
@@ -100,7 +100,7 @@ class AGSICompany(enum.Enum):
     ENUM containing 2 things about an Area: code, country
     """
 
-    def __new__(cls, *args, **kwds):
+    def __new__(cls, *args, **kwargs):
         obj = object.__new__(cls)
         obj._value_ = args[0]
         return obj
@@ -162,7 +162,7 @@ class AGSICompany(enum.Enum):
     swb_vertrieb_bremen = "11XSWB-BREMEN--I", "DE"
     swkiel_speicher = "37X000000000051Y", "DE"
     tep = "21X000000001307F", "DE"
-    total_etzel_gaslager = '**TOBEPROVIDED**', 'DE'
+    total_etzel_gaslager = "**TOBEPROVIDED**", "DE"
     trianel_gasspeicher_epe = "21X000000001310Q", "DE"
     uniper_energy_storage = "21X000000001127H", "DE"
     vng_gasspeicher_gmbh = "21X000000001138C", "DE"
@@ -200,7 +200,7 @@ class AGSIStorage(enum.Enum):
     ENUM containing 3 things about an Area: code, country, code company
     """
 
-    def __new__(cls, *args, **kwds):
+    def __new__(cls, *args, **kwargs):
         obj = object.__new__(cls)
         obj._value_ = args[0]
         return obj
