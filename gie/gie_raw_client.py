@@ -8,12 +8,15 @@ from gie.agsi_mappings import (
     AGSICountry,
     lookup_country_agsi,
     lookup_facility_agsi,
-    AGSICompany, lookup_agsi_company,
+    AGSICompany,
+    lookup_agsi_company,
 )
 from gie.alsi_mappings import (
     ALSIFacility,
     lookup_country_alsi,
-    lookup_facility_alsi, lookup_alsi_company, ALSICompany,
+    lookup_facility_alsi,
+    lookup_alsi_company,
+    ALSICompany,
 )
 from gie.api_mappings import APIType
 from gie.exceptions import ApiError
@@ -46,12 +49,12 @@ class GieRawClient:
         return await self.fetch("/about?show=listing", APIType.ALSI)
 
     async def query_alsi_news_listing(
-            self, news_url_item: Optional[Union[int, str]] = None
+        self, news_url_item: Optional[Union[int, str]] = None
     ):
         return await self.fetch("/news?", APIType.ALSI, news_url_item=news_url_item)
 
     async def query_agsi_news_listing(
-            self, news_url_item: Optional[Union[int, str]] = None
+        self, news_url_item: Optional[Union[int, str]] = None
     ):
         return await self.fetch("/news?", APIType.AGSI, news_url_item=news_url_item)
 
@@ -110,12 +113,12 @@ class GieRawClient:
     #     return await self.fetch(country.get_url(), APIType.ALSI, start=start, end=end)
 
     async def query_country_agsi_storage(
-            self,
-            country: Optional[Union[AGSICountry, str]] = None,
-            start: Optional[Union[datetime.datetime, str]] = None,
-            end: Optional[Union[datetime.datetime, str]] = None,
-            date: Optional[Union[datetime.datetime, str]] = None,
-            size: Optional[Union[int, str]] = None,
+        self,
+        country: Optional[Union[AGSICountry, str]] = None,
+        start: Optional[Union[datetime.datetime, str]] = None,
+        end: Optional[Union[datetime.datetime, str]] = None,
+        date: Optional[Union[datetime.datetime, str]] = None,
+        size: Optional[Union[int, str]] = None,
     ):
         if country:
             country = lookup_country_agsi(country)
@@ -129,12 +132,12 @@ class GieRawClient:
         )
 
     async def query_country_alsi_storage(
-            self,
-            country: Optional[Union[AGSICountry, str]] = None,
-            start: Optional[Union[datetime.datetime, str]] = None,
-            end: Optional[Union[datetime.datetime, str]] = None,
-            date: Optional[Union[datetime.datetime, str]] = None,
-            size: Optional[Union[int, str]] = None,
+        self,
+        country: Optional[Union[AGSICountry, str]] = None,
+        start: Optional[Union[datetime.datetime, str]] = None,
+        end: Optional[Union[datetime.datetime, str]] = None,
+        date: Optional[Union[datetime.datetime, str]] = None,
+        size: Optional[Union[int, str]] = None,
     ):
         if country:
             country = lookup_country_alsi(country)
@@ -148,12 +151,12 @@ class GieRawClient:
         )
 
     async def query_agsi_facility_storage(
-            self,
-            facility_name: Union[AGSIFacility, str],
-            start: Optional[Union[datetime.datetime, str]] = None,
-            end: Optional[Union[datetime.datetime, str]] = None,
-            date: Optional[Union[datetime.datetime, str]] = None,
-            size: Optional[Union[int, str]] = None,
+        self,
+        facility_name: Union[AGSIFacility, str],
+        start: Optional[Union[datetime.datetime, str]] = None,
+        end: Optional[Union[datetime.datetime, str]] = None,
+        date: Optional[Union[datetime.datetime, str]] = None,
+        size: Optional[Union[int, str]] = None,
     ):
         if facility_name:
             facility_name = lookup_facility_agsi(facility_name)
@@ -167,12 +170,12 @@ class GieRawClient:
         )
 
     async def query_alsi_facility_storage(
-            self,
-            facility_name: Union[ALSIFacility, str],
-            start: Optional[Union[datetime.datetime, str]] = None,
-            end: Optional[Union[datetime.datetime, str]] = None,
-            date: Optional[Union[datetime.datetime, str]] = None,
-            size: Optional[Union[int, str]] = None,
+        self,
+        facility_name: Union[ALSIFacility, str],
+        start: Optional[Union[datetime.datetime, str]] = None,
+        end: Optional[Union[datetime.datetime, str]] = None,
+        date: Optional[Union[datetime.datetime, str]] = None,
+        size: Optional[Union[int, str]] = None,
     ):
         if facility_name:
             facility_name = lookup_facility_alsi(facility_name)
@@ -186,38 +189,51 @@ class GieRawClient:
         )
 
     async def query_agsi_company(
-            self,
-            company_name: Union[AGSICompany, str],
-            start: Optional[Union[datetime.datetime, str]] = None,
-            end: Optional[Union[datetime.datetime, str]] = None,
-            date: Optional[Union[datetime.datetime, str]] = None,
-            size: Optional[Union[int, str]] = None,
+        self,
+        company_name: Union[AGSICompany, str],
+        start: Optional[Union[datetime.datetime, str]] = None,
+        end: Optional[Union[datetime.datetime, str]] = None,
+        date: Optional[Union[datetime.datetime, str]] = None,
+        size: Optional[Union[int, str]] = None,
     ):
         company_name = lookup_agsi_company(company_name)
-        return await self.fetch(company_name.get_url() if company_name else "", APIType.AGSI, start=start, end=end,
-                                date=date, size=size)
+        return await self.fetch(
+            company_name.get_url() if company_name else "",
+            APIType.AGSI,
+            start=start,
+            end=end,
+            date=date,
+            size=size,
+        )
 
     async def query_alsi_company(
-            self,
-            company_name: Union[ALSICompany, str],
-            start: Optional[Union[datetime.datetime, str]] = None,
-            end: Optional[Union[datetime.datetime, str]] = None,
-            date: Optional[Union[datetime.datetime, str]] = None,
-            size: Optional[Union[int, str]] = None,
+        self,
+        company_name: Union[ALSICompany, str],
+        start: Optional[Union[datetime.datetime, str]] = None,
+        end: Optional[Union[datetime.datetime, str]] = None,
+        date: Optional[Union[datetime.datetime, str]] = None,
+        size: Optional[Union[int, str]] = None,
     ):
         company_name = lookup_alsi_company(company_name)
-        return await self.fetch(company_name.get_url() if company_name else "", APIType.ALSI, start=start, end=end,
-                                date=date, size=size)
+        return await self.fetch(
+            company_name.get_url() if company_name else "",
+            APIType.ALSI,
+            start=start,
+            end=end,
+            date=date,
+            size=size,
+        )
 
+    # Our Abstract FETCH method which helps us request the API with series of optional query params
     async def fetch(
-            self,
-            url: str,
-            token: APIType,
-            news_url_item: Optional[Union[int, str]] = None,
-            start: Optional[Union[datetime.datetime, str]] = None,
-            end: Optional[Union[datetime.datetime, str]] = None,
-            date: Optional[Union[datetime.datetime, str]] = None,
-            size: Optional[Union[int, str]] = None,
+        self,
+        url: str,
+        token: APIType,
+        news_url_item: Optional[Union[int, str]] = None,
+        start: Optional[Union[datetime.datetime, str]] = None,
+        end: Optional[Union[datetime.datetime, str]] = None,
+        date: Optional[Union[datetime.datetime, str]] = None,
+        size: Optional[Union[int, str]] = None,
     ):
         par = {
             "url": news_url_item,
@@ -228,7 +244,7 @@ class GieRawClient:
         }
 
         async with self.session.get(
-                token.value + url, params={k: v for k, v in par.items() if v is not None}
+            token.value + url, params={k: v for k, v in par.items() if v is not None}
         ) as resp:
             return await resp.json()
 

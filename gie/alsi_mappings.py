@@ -2,6 +2,7 @@ import enum
 from typing import Union
 
 
+# Checking the provided company string in our base enums
 def lookup_alsi_company(input_string: Union["ALSICompany", str]) -> "ALSICompany":
     if isinstance(input_string, ALSICompany):
         return input_string
@@ -15,6 +16,7 @@ def lookup_alsi_company(input_string: Union["ALSICompany", str]) -> "ALSICompany
                 raise ValueError("Invalid lso string")
 
 
+# Checking the provided facility string in our base enums
 def lookup_facility_alsi(input_string: Union["ALSIFacility", str]) -> "ALSIFacility":
     if isinstance(input_string, ALSIFacility):
         return input_string
@@ -28,6 +30,7 @@ def lookup_facility_alsi(input_string: Union["ALSIFacility", str]) -> "ALSIFacil
                 raise ValueError("Invalid terminal string")
 
 
+# Checking the provided country string in our base enums
 def lookup_country_alsi(input_string: Union["ALSICountry", str]) -> "ALSICountry":
     if isinstance(input_string, ALSICountry):
         return input_string
@@ -163,13 +166,13 @@ class ALSIFacility(enum.Enum):
 
     def get_url(self):
         return (
-            "?"
-            + "country="
-            + self.country
-            + "&company="
-            + self.company
-            + "&facility="
-            + self.code
+                "?"
+                + "country="
+                + self.country
+                + "&company="
+                + self.company
+                + "&facility="
+                + self.code
         )
 
     zeebrugge = "21W0000000001245", "BE", "21X000000001006T"

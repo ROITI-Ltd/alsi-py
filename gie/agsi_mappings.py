@@ -2,6 +2,7 @@ import enum
 from typing import Union
 
 
+# Checking the provided company string in our base enums
 def lookup_agsi_company(input_string: Union["AGSICompany", str]) -> "AGSICompany":
     if isinstance(input_string, AGSICompany):
         return input_string
@@ -15,6 +16,7 @@ def lookup_agsi_company(input_string: Union["AGSICompany", str]) -> "AGSICompany
                 raise ValueError("The company string provided is invalid!")
 
 
+# Checking the provided facility string in our base enums
 def lookup_facility_agsi(input_string: Union["AGSIFacility", str]) -> "AGSIFacility":
     if isinstance(input_string, AGSIFacility):
         return input_string
@@ -30,6 +32,7 @@ def lookup_facility_agsi(input_string: Union["AGSIFacility", str]) -> "AGSIFacil
                 raise ValueError("The storage string provided is invalid!")
 
 
+# Checking the provided country string in our base enums
 def lookup_country_agsi(input_string: Union["AGSICountry", str]) -> "AGSICountry":
     if isinstance(input_string, AGSICountry):
         return input_string
