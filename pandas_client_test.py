@@ -1,10 +1,11 @@
 import asyncio
 
 from gie.gie_pandas_client import GiePandasClient
+from decouple import config
 
 
 async def main():
-    client = GiePandasClient(api_key="b551abbce4194afe648157dd8323c8fe")
+    client = GiePandasClient(api_key=config("API_KEY"))
 
     # res = await client.query_gas_country("BG", start="2020-01-01", end="2022-07-10")
     # res2 = await client.query_agsi_eic_listing()

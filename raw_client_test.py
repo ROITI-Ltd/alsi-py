@@ -1,9 +1,12 @@
-from gie.gie_raw_client import GieRawClient
 import asyncio
+
+from decouple import config
+
+from gie.gie_raw_client import GieRawClient
 
 
 async def main():
-    client = GieRawClient(api_key="b551abbce4194afe648157dd8323c8fe")
+    client = GieRawClient(api_key=config("API_KEY"))
 
     # res = await client.query_lng_terminal(
     #     "fos_cavaou", start="2020-01-01", end="2022-07-10"
