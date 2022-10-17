@@ -186,7 +186,7 @@ class GieRawClient:
         country_param = lookup_country_alsi(country) if country is not None else ""
         return await self.fetch(
             "/unavailability" + country_param.get_url()
-            if isinstance(country, ALSICountry)
+            if isinstance(country_param, ALSICountry)
             else "/unavailability",
             APIType.ALSI,
             start=start,
