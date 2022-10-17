@@ -264,7 +264,7 @@ class GieRawClient:
     # Our Abstract FETCH method which helps us request the API with series of optional query params
     async def fetch(
         self,
-        url: Optional[str],
+        url: str,
         token: APIType,
         news_url_item: Optional[Union[int, str]] = None,
         start: Optional[Union[datetime.datetime, str]] = None,
@@ -281,7 +281,7 @@ class GieRawClient:
         }
 
         async with self.session.get(
-            token.value + url, params={k: v for k, v in par.items() if v is not None}
+            token.value + url if url else token.value, params={k: v for k, v in par.items() if v is not None}
         ) as resp:
             return await resp.json()
 
