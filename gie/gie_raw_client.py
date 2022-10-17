@@ -28,7 +28,7 @@ class GieRawClient:
         self.api_key = api_key
         self.session = session
 
-        if not self.session:
+        if self.session is None:
             self.session = aiohttp.ClientSession(
                 raise_for_status=True, headers={"x-key": self.api_key}
             )
@@ -124,7 +124,7 @@ class GieRawClient:
         if country:
             country = lookup_country_agsi(country)
         return await self.fetch(
-            country.get_url() if country else None,
+            country.get_url() if country else "",
             APIType.AGSI,
             start=start,
             end=end,
