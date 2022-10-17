@@ -1,5 +1,6 @@
 import datetime
 from typing import Union, Optional
+
 import pandas as pd
 
 from gie.agsi_mappings import AGSIFacility, AGSICountry, AGSICompany
