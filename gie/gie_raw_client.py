@@ -121,10 +121,10 @@ class GieRawClient:
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        if country:
-            country = lookup_country_agsi(country)
+        country_param = lookup_country_alsi(country) if country is not None else ""
+
         return await self.fetch(
-            country.get_url() if country else "",
+            country_param.get_url() if country_param else "",
             APIType.AGSI,
             start=start,
             end=end,
