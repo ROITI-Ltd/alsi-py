@@ -166,13 +166,13 @@ class ALSIFacility(enum.Enum):
 
     def get_url(self):
         return (
-                "?"
-                + "country="
-                + self.country
-                + "&company="
-                + self.company
-                + "&facility="
-                + self.code
+            "?"
+            + "country="
+            + self.country
+            + "&company="
+            + self.company
+            + "&facility="
+            + self.code
         )
 
     zeebrugge = "21W0000000001245", "BE", "21X000000001006T"

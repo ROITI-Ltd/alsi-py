@@ -122,6 +122,22 @@ class GiePandasClient(GieRawClient):
         df = pd.DataFrame(json_result["data"])
         return df
 
+    async def query_agsi_unavailability(self, country: Optional[Union[AGSICountry, str]] = None,
+                                        start: Optional[Union[datetime.datetime, str]] = None,
+                                        end: Optional[Union[datetime.datetime, str]] = None,
+                                        size: Optional[Union[int, str]] = None):
+        json_result = await super().query_agsi_unavailability(country=country, start=start, end=end, size=size)
+        df = pd.DataFrame(json_result["data"])
+        return df
+
+    async def query_alsi_unavailability(self, country: Optional[Union[ALSICountry, str]] = None,
+                                        start: Optional[Union[datetime.datetime, str]] = None,
+                                        end: Optional[Union[datetime.datetime, str]] = None,
+                                        size: Optional[Union[int, str]] = None):
+        json_result = await super().query_alsi_unavailability(country=country, start=start, end=end, size=size)
+        df = pd.DataFrame(json_result["data"])
+        return df
+
     # async def query_gas_storage(
     #     self,
     #     storage: Union[AGSIFacility, str],

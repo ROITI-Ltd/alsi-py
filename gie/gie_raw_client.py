@@ -16,7 +16,7 @@ from gie.alsi_mappings import (
     lookup_country_alsi,
     lookup_facility_alsi,
     lookup_alsi_company,
-    ALSICompany,
+    ALSICompany, ALSICountry,
 )
 from gie.api_mappings import APIType
 from gie.exceptions import ApiError
@@ -133,7 +133,7 @@ class GieRawClient:
 
     async def query_country_alsi_storage(
         self,
-        country: Optional[Union[AGSICountry, str]] = None,
+        country: Optional[Union[ALSICountry, str]] = None,
         start: Optional[Union[datetime.datetime, str]] = None,
         end: Optional[Union[datetime.datetime, str]] = None,
         date: Optional[Union[datetime.datetime, str]] = None,
@@ -149,6 +149,22 @@ class GieRawClient:
             date=date,
             size=size,
         )
+
+    async def query_agsi_unavailability(self, country: Optional[Union[AGSICountry, str]] = None,
+                                        start: Optional[Union[datetime.datetime, str]] = None,
+                                        end: Optional[Union[datetime.datetime, str]] = None,
+                                        size: Optional[Union[int, str]] = None):
+        if country:
+            country = lookup_country_agsi(country)
+        return await self.fetch("/unavailability" + country.get_url() if country else "/unavailability", APIType.AGSI, start=start, end=end, size=size)
+
+    async def query_alsi_unavailability(self, country: Optional[Union[ALSICountry, str]] = None,
+                                        start: Optional[Union[datetime.datetime, str]] = None,
+                                        end: Optional[Union[datetime.datetime, str]] = None,
+                                        size: Optional[Union[int, str]] = None):
+        if country:
+            country = lookup_country_agsi(country)
+        return await self.fetch("/unavailability" + country.get_url() if country else "/unavailability", APIType.ALSI, start=start, end=end, size=size)
 
     async def query_agsi_facility_storage(
         self,

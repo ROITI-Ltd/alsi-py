@@ -21,7 +21,10 @@ async def main():
     # res13 = await client.query_alsi_facility_storage("dunkerque")
     # result14 = await client.query_agsi_company("astora", size=60)
     # result15 = await client.query_alsi_company("dunkerque_lng")
-    result16 = await client.query_alsi_company("dunkerque_lng", size=200)
+    # result16 = await client.query_alsi_company("dunkerque_lng", size=200)
+    # result17 = await client.query_agsi_unavailability("GB", size=60)
+    # result18 = await client.query_agsi_unavailability()
+    result19 = await client.query_alsi_unavailability("FR")
 
     await client.close_session()
 
