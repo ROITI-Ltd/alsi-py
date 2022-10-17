@@ -270,7 +270,7 @@ class GieRawClient:
     # Our Abstract FETCH method which helps us request the API with series of optional query params
     async def fetch(
         self,
-        url: str,
+        url: Union[str, ""],
         token: APIType,
         news_url_item: Optional[Union[int, str]] = None,
         start: Optional[Union[datetime.datetime, str]] = None,
