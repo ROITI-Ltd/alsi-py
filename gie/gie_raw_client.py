@@ -176,7 +176,7 @@ class GieRawClient:
         size: Optional[Union[int, str]] = None,
     ):
         if country:
-            country = lookup_country_agsi(country)
+            country = lookup_country_alsi(country)
         return await self.fetch(
             "/unavailability" + country.get_url() if country else "/unavailability",
             APIType.ALSI,
