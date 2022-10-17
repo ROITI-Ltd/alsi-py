@@ -26,12 +26,18 @@ from gie.exceptions import ApiError
 class GieRawClient:
     def __init__(self, api_key: str, session: Optional[aiohttp.ClientSession] = None):
         self.api_key = api_key
-        self.session = session
-
-        if self.session is None:
-            self.session = aiohttp.ClientSession(
+        self.session = (
+            session
+            if session is not None
+            else aiohttp.ClientSession(
                 raise_for_status=True, headers={"x-key": self.api_key}
             )
+        )
+
+        # if self.session is None:
+        #     self.session = aiohttp.ClientSession(
+        #         raise_for_status=True, headers={"x-key": self.api_key}
+        #     )
 
     @property
     def api_key(self):
@@ -281,7 +287,8 @@ class GieRawClient:
         }
 
         async with self.session.get(
-            token.value + url if url else token.value, params={k: v for k, v in par.items() if v is not None}
+            token.value + url if url else token.value,
+            params={k: v for k, v in par.items() if v is not None},
         ) as resp:
             return await resp.json()
 
