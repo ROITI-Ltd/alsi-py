@@ -51,7 +51,7 @@ class GiePandasClient(GieRawClient):
     # ALSI query which provides data for a specific country
     async def query_country_alsi_storage(
         self,
-        country: Optional[Union[AGSICountry, str]] = None,
+        country: Optional[Union[ALSICountry, str]] = None,
         start: Optional[Union[datetime.datetime, str]] = None,
         end: Optional[Union[datetime.datetime, str]] = None,
         date: Optional[Union[datetime.datetime, str]] = None,
