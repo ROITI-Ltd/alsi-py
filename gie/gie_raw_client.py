@@ -124,7 +124,7 @@ class GieRawClient:
         if country:
             country = lookup_country_agsi(country)
         return await self.fetch(
-            country.get_url() if country else "",
+            country.get_url() if country else None,
             APIType.AGSI,
             start=start,
             end=end,
