@@ -121,7 +121,7 @@ class GieRawClient:
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        country_param = lookup_country_alsi(country) if country is not None else ""
+        country_param = lookup_country_agsi(country) if country is not None else ""
 
         return await self.fetch(
             country_param.get_url() if country_param else "",
@@ -140,10 +140,10 @@ class GieRawClient:
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        if country:
-            country = lookup_country_alsi(country)
+        country_param = lookup_country_alsi(country) if country is not None else ""
+
         return await self.fetch(
-            country.get_url() if country else "",
+            country_param.get_url() if country_param else "",
             APIType.AGSI,
             start=start,
             end=end,
@@ -158,10 +158,12 @@ class GieRawClient:
         end: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        if country:
-            country = lookup_country_agsi(country)
+        country_param = lookup_country_agsi(country) if country is not None else ""
+
         return await self.fetch(
-            "/unavailability" + country.get_url() if country else "/unavailability",
+            "/unavailability" + country_param.get_url()
+            if country
+            else "/unavailability",
             APIType.AGSI,
             start=start,
             end=end,
@@ -175,10 +177,11 @@ class GieRawClient:
         end: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        if country:
-            country = lookup_country_alsi(country)
+        country_param = lookup_country_alsi(country) if country is not None else ""
         return await self.fetch(
-            "/unavailability" + country.get_url() if country else "/unavailability",
+            "/unavailability" + country_param.get_url()
+            if country
+            else "/unavailability",
             APIType.ALSI,
             start=start,
             end=end,
@@ -193,10 +196,10 @@ class GieRawClient:
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        if facility_name:
-            facility_name = lookup_facility_agsi(facility_name)
+        facility_param = lookup_facility_agsi(facility_name)
+
         return await self.fetch(
-            facility_name.get_url() if facility_name else "",
+            facility_param.get_url(),
             APIType.AGSI,
             start=start,
             end=end,
@@ -212,10 +215,9 @@ class GieRawClient:
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        if facility_name:
-            facility_name = lookup_facility_alsi(facility_name)
+        facility_param = lookup_facility_alsi(facility_name)
         return await self.fetch(
-            facility_name.get_url() if facility_name else "",
+            facility_param.get_url(),
             APIType.ALSI,
             start=start,
             end=end,
@@ -231,9 +233,9 @@ class GieRawClient:
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        company_name = lookup_agsi_company(company_name)
+        company_param = lookup_agsi_company(company_name)
         return await self.fetch(
-            company_name.get_url() if company_name else "",
+            company_param.get_url(),
             APIType.AGSI,
             start=start,
             end=end,
@@ -249,9 +251,9 @@ class GieRawClient:
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
     ):
-        company_name = lookup_alsi_company(company_name)
+        company_param = lookup_alsi_company(company_name)
         return await self.fetch(
-            company_name.get_url() if company_name else "",
+            company_param.get_url(),
             APIType.ALSI,
             start=start,
             end=end,
@@ -262,7 +264,7 @@ class GieRawClient:
     # Our Abstract FETCH method which helps us request the API with series of optional query params
     async def fetch(
         self,
-        url: str,
+        url: Optional[str],
         token: APIType,
         news_url_item: Optional[Union[int, str]] = None,
         start: Optional[Union[datetime.datetime, str]] = None,
