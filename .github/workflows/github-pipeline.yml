@@ -31,5 +31,4 @@ jobs:
           pip install -r requirements.txt
       - name: Lint & Format check
         run: |
-          python -m mypy . --ignore-missing-imports && 
-          python -m black -l 99 --check . --diff
+          python -m mypy . --ignore-missing-imports

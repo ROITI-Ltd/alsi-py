@@ -1,7 +1,7 @@
 import asyncio
+
 import pytest
 import pytest_asyncio
-import aiohttp
 from aiohttp import ClientResponseError
 from decouple import config
 
