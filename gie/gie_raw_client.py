@@ -286,12 +286,10 @@ class GieRawClient:
             "size": size,
         }
 
+        token = token.value if isinstance(token, APIType) else token
+
         async with self.session.get(
-            token.value
-            if isinstance(token, APIType)
-            else token + url
-            if url
-            else token,
+            token + url if url else token,
             params={k: v for k, v in par.items() if v is not None},
         ) as resp:
             return await resp.json()
