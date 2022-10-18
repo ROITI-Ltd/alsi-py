@@ -151,9 +151,6 @@ class TestRawGieClient:
             await client[0].session.get("https://agsi.gie.eu/api8888")
 
     @pytest.mark.asyncio
-    async def test_gie_raw_client_session_request_with_incorrect_api_token(
-        self, client
-    ):
-        # It wasn't supposed to work with invalid api token but yet it works
+    async def test_gie_raw_client_session_request_with_incorrect_api_token(self, client)
         resp = await client[1].session.get("https://alsi.gie.eu/api/news?")
         assert resp.status == 200
