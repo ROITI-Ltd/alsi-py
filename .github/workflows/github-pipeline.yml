@@ -32,4 +32,4 @@ jobs:
       - name: Lint & Format check
         run: |
           python -m mypy . --ignore-missing-imports && 
-          python -m black -l 99 --check . --diff
+          python -m black -l 79 --check . --diff
