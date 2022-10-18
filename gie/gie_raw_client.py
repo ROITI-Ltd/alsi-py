@@ -46,7 +46,7 @@ class GieRawClient:
     @api_key.setter
     def api_key(self, value):
         if not value:
-            raise ApiError("API token is missing!")
+            raise ApiError("API token is invalid or missing!")
         self.__api_key = value
 
     async def query_agsi_eic_listing(self):
@@ -271,7 +271,7 @@ class GieRawClient:
     async def fetch(
         self,
         url,
-        token: APIType,
+        token: Union[APIType, str],
         news_url_item: Optional[Union[int, str]] = None,
         start: Optional[Union[datetime.datetime, str]] = None,
         end: Optional[Union[datetime.datetime, str]] = None,
@@ -287,7 +287,11 @@ class GieRawClient:
         }
 
         async with self.session.get(
-            token.value + url if url else token.value,
+            token.value
+            if isinstance(token, APIType)
+            else token + url
+            if url
+            else token.value,
             params={k: v for k, v in par.items() if v is not None},
         ) as resp:
             return await resp.json()
