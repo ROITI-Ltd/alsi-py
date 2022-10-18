@@ -65,60 +65,6 @@ class GieRawClient:
     ):
         return await self.fetch("/news?", APIType.AGSI, news_url_item=news_url_item)
 
-    # async def query_gas_storage(
-    #     self,
-    #     storage: Union[AGSIFacility, str],
-    #     start: Optional[Union[datetime.datetime, str]] = None,
-    #     end: Optional[Union[datetime.datetime, str]] = None,
-    # ) -> Coroutine[Any, Any, None]:
-    #     storage = lookup_storage_agsi(storage)
-    #     return await self.fetch(storage.get_url(), APIType.AGSI, start=start, end=end)
-    #
-    # async def query_gas_company(
-    #     self,
-    #     company: Union[AGSICompany, str],
-    #     start: Union[datetime.datetime, str],
-    #     end: Union[datetime.datetime, str],
-    # ) -> Coroutine[Any, Any, None]:
-    #     company = lookup_company(company)
-    #     return await self.fetch(company.get_url(), APIType.AGSI, start=start, end=end)
-    #
-    # async def query_gas_country(
-    #     self,
-    #     country: Union[AGSICountry, str],
-    #     start: Union[datetime.datetime, str],
-    #     end: Union[datetime.datetime, str],
-    # ) -> Coroutine[Any, Any, None]:
-    #     country = lookup_country_agsi(country)
-    #     return await self.fetch(country.get_url(), APIType.AGSI, start=start, end=end)
-    #
-    # async def query_lng_terminal(
-    #     self,
-    #     terminal: Union[ALSIFacility, str],
-    #     start: Union[datetime.datetime, str],
-    #     end: Union[datetime.datetime, str],
-    # ) -> Coroutine[Any, Any, None]:
-    #     terminal = lookup_terminal(terminal)
-    #     return await self.fetch(terminal.get_url(), APIType.ALSI, start=start, end=end)
-    #
-    # async def query_lng_lso(
-    #     self,
-    #     lso: Union[ALSICompany, str],
-    #     start: Union[datetime.datetime, str],
-    #     end: Union[datetime.datetime, str],
-    # ) -> Coroutine[Any, Any, None]:
-    #     lso = lookup_lso(lso)
-    #     return await self.fetch(lso.get_url(), APIType.ALSI, start=start, end=end)
-    #
-    # async def query_lng_country(
-    #     self,
-    #     country: Union[ALSICountry, str],
-    #     start: Union[datetime.datetime, str],
-    #     end: Union[datetime.datetime, str],
-    # ) -> Coroutine[Any, Any, None]:
-    #     country = lookup_country_alsi(country)
-    #     return await self.fetch(country.get_url(), APIType.ALSI, start=start, end=end)
-
     async def query_country_agsi_storage(
         self,
         country: Optional[Union[AGSICountry, str]] = None,
