@@ -291,7 +291,7 @@ class GieRawClient:
             if isinstance(token, APIType)
             else token + url
             if url
-            else token.value,
+            else token,
             params={k: v for k, v in par.items() if v is not None},
         ) as resp:
             return await resp.json()
