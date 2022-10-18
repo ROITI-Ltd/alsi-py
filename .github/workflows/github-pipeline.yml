@@ -32,3 +32,9 @@ jobs:
       - name: Lint & Format check
         run: |
           python -m mypy . --ignore-missing-imports
+      
+      - name: Run Unit Tests
+        run: | 
+          export PYTHONPATH=./gie && 
+          export API_KEY=${{ secrets.API_KEY }} &&
+          python -m pytest ./tests --import-mode=append --cov
