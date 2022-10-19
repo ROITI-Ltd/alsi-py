@@ -31,6 +31,8 @@ async def main():
     The following methods return pandas DataFrame, however you can use the
     raw client "raw_client = GieRawClient(api_key=Your API key)" and you will get the results as
     JSON parsed to a Python Object
+    
+    NOTE that every method available for AGSI is also available for ALSI
     """
     pandas_client = GiePandasClient(api_key=config("API_KEY"))
 
