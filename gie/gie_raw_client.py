@@ -1,25 +1,24 @@
 import datetime
-from turtle import end_poly
+import urllib.parse
 from typing import Dict, Optional, Union
-from urllib.parse import urljoin
 
 import aiohttp as aiohttp
 
 from gie.exceptions import ApiError
-from gie.mappings import (
-    AGSICompany,
-    AGSICountry,
-    AGSIFacility,
-    ALSICompany,
-    ALSICountry,
-    ALSIFacility,
-    APIType,
-    lookup_agsi_company,
-    lookup_alsi_company,
+from gie.mappings.agsi_company import AGSICompany
+from gie.mappings.agsi_country import AGSICountry
+from gie.mappings.agsi_facility import AGSIFacility
+from gie.mappings.alsi_company import ALSICompany
+from gie.mappings.alsi_country import ALSICountry
+from gie.mappings.alsi_facility import ALSIFacility
+from gie.mappings.api_mappings import APIType
+from gie.lookup_functions import (
     lookup_country_agsi,
     lookup_country_alsi,
     lookup_facility_agsi,
     lookup_facility_alsi,
+    lookup_agsi_company,
+    lookup_alsi_company,
 )
 
 
@@ -46,24 +45,24 @@ class GieRawClient:
             raise ApiError("API api_type is invalid or missing!")
         self.__api_key = value
 
-    async def query_agsi_eic_listing(self):
-        return await self.fetch(APIType.AGSI, "/about?show=listing")
+    async def query_agsi_eic_listing(self) -> None:
+        return await self.fetch(APIType.AGSI, "about?show=listing")
 
     async def query_alsi_eic_listing(self):
-        return await self.fetch(APIType.ALSI, "/about?show=listing")
+        return await self.fetch(APIType.ALSI, "about?show=listing")
 
     async def query_alsi_news_listing(
         self, news_url_item: Optional[Union[int, str]] = None
     ):
         return await self.fetch(
-            APIType.ALSI, "/news", news_url_item=news_url_item
+            APIType.ALSI, "news", news_url_item=news_url_item
         )
 
     async def query_agsi_news_listing(
         self, news_url_item: Optional[Union[int, str]] = None
     ):
         return await self.fetch(
-            APIType.AGSI, "/news", news_url_item=news_url_item
+            APIType.AGSI, "news", news_url_item=news_url_item
         )
 
     async def query_country_agsi_storage(
@@ -78,11 +77,8 @@ class GieRawClient:
             lookup_country_agsi(country) if country is not None else ""
         )
 
-        params = (
-            country_param.get_params()
-            if isinstance(country_param, AGSICountry)
-            else None
-        )
+        params = country_param.get_params() if country_param else ""
+
         return await self.fetch(
             APIType.AGSI,
             params=params,
@@ -104,11 +100,8 @@ class GieRawClient:
             lookup_country_alsi(country) if country is not None else ""
         )
 
-        params = (
-            country_param.get_params()
-            if isinstance(country_param, ALSICountry)
-            else None
-        )
+        params = country_param.get_params() if country_param else ""
+
         return await self.fetch(
             APIType.AGSI,
             params=params,
@@ -129,14 +122,11 @@ class GieRawClient:
             lookup_country_agsi(country) if country is not None else ""
         )
 
-        params = (
-            country_param.get_params()
-            if isinstance(country_param, AGSICountry)
-            else None
-        )
+        params = country_param.get_params() if country_param else ""
+
         return await self.fetch(
             APIType.AGSI,
-            endpoint="/unavailability",
+            endpoint="unavailability",
             params=params,
             start=start,
             end=end,
@@ -153,11 +143,13 @@ class GieRawClient:
         country_param = (
             lookup_country_alsi(country) if country is not None else ""
         )
+
+        params = country_param.get_params() if country_param else ""
+
         return await self.fetch(
-            "/unavailability" + country_param.get_url()
-            if isinstance(country_param, ALSICountry)
-            else "/unavailability",
             APIType.ALSI,
+            endpoint="unavailability",
+            params=params,
             start=start,
             end=end,
             size=size,
@@ -173,9 +165,11 @@ class GieRawClient:
     ):
         facility_param = lookup_facility_agsi(facility_name)
 
+        params = facility_param.get_params()
+
         return await self.fetch(
-            facility_param.get_url(),
             APIType.AGSI,
+            params=params,
             start=start,
             end=end,
             date=date,
@@ -191,9 +185,10 @@ class GieRawClient:
         size: Optional[Union[int, str]] = None,
     ):
         facility_param = lookup_facility_alsi(facility_name)
+        params = facility_param.get_params()
         return await self.fetch(
-            facility_param.get_url(),
             APIType.ALSI,
+            params=params,
             start=start,
             end=end,
             date=date,
@@ -209,9 +204,11 @@ class GieRawClient:
         size: Optional[Union[int, str]] = None,
     ):
         company_param = lookup_agsi_company(company_name)
+        params = company_param.get_params()
+
         return await self.fetch(
-            company_param.get_url(),
             APIType.AGSI,
+            params=params,
             start=start,
             end=end,
             date=date,
@@ -227,10 +224,10 @@ class GieRawClient:
         size: Optional[Union[int, str]] = None,
     ):
         company_param = lookup_alsi_company(company_name)
+        params = company_param.get_params()
         return await self.fetch(
-            "",
             APIType.ALSI,
-            company_param.get_params(),
+            params=params,
             start=start,
             end=end,
             date=date,
@@ -266,7 +263,7 @@ class GieRawClient:
             api_type.value if isinstance(api_type, APIType) else api_type
         )
 
-        final_url = urljoin(root_url, endpoint)
+        final_url = urllib.parse.urljoin(root_url, endpoint)
         final_params = {k: v for k, v in _params.items() if v is not None}
 
         async with self.session.get(

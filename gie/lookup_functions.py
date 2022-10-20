@@ -1,11 +1,11 @@
 from typing import Union
 
-from alsi_company import ALSICompany
-from alsi_country import ALSICountry
-from alsi_facility import ALSIFacility
-from agsi_company import AGSICompany
-from agsi_country import AGSICountry
-from agsi_facility import AGSIFacility
+from gie.mappings.agsi_company import AGSICompany
+from gie.mappings.agsi_country import AGSICountry
+from gie.mappings.agsi_facility import AGSIFacility
+from gie.mappings.alsi_company import ALSICompany
+from gie.mappings.alsi_country import ALSICountry
+from gie.mappings.alsi_facility import ALSIFacility
 
 
 def lookup_agsi_company(key: Union[AGSICompany, str]) -> AGSICompany:
@@ -37,17 +37,13 @@ def lookup_agsi_company(key: Union[AGSICompany, str]) -> AGSICompany:
             return AGSICompany[key]
         except KeyError:
             try:
-                return [
-                    obj for obj in AGSICompany if obj.value == key
-                ][0]
+                return [obj for obj in AGSICompany if obj.value == key][0]
             except IndexError:
                 raise ValueError("The company string provided is invalid!")
 
 
 # Checking the provided facility string in our base enums
-def lookup_facility_agsi(
-    key: Union[AGSIFacility, str]
-) -> AGSIFacility:
+def lookup_facility_agsi(key: Union[AGSIFacility, str]) -> AGSIFacility:
     """Key lookup for AGSIFacility
 
     If the key is already of type AGSIFacility, returns it immediately.
@@ -77,9 +73,7 @@ def lookup_facility_agsi(
         except KeyError:
 
             try:
-                return [
-                    obj for obj in AGSIFacility if obj.value == key
-                ][0]
+                return [obj for obj in AGSIFacility if obj.value == key][0]
             except IndexError:
                 raise ValueError("The storage string provided is invalid!")
 
@@ -92,9 +86,7 @@ def lookup_country_agsi(key: Union[AGSICountry, str]) -> AGSICountry:
             return AGSICountry[key]
         except KeyError:
             try:
-                return [
-                    obj for obj in AGSICountry if obj.value == key
-                ][0]
+                return [obj for obj in AGSICountry if obj.value == key][0]
             except IndexError:
                 raise ValueError("The country string provided is invalid!")
 
@@ -107,16 +99,12 @@ def lookup_alsi_company(key: Union[ALSICompany, str]) -> ALSICompany:
             return ALSICompany[key]
         except KeyError:
             try:
-                return [
-                    obj for obj in ALSICompany if obj.value == key
-                ][0]
+                return [obj for obj in ALSICompany if obj.value == key][0]
             except IndexError:
                 raise ValueError("Invalid lso string")
 
 
-def lookup_facility_alsi(
-    key: Union[ALSIFacility, str]
-) -> ALSIFacility:
+def lookup_facility_alsi(key: Union[ALSIFacility, str]) -> ALSIFacility:
     if isinstance(key, ALSIFacility):
         return key
     else:
@@ -124,9 +112,7 @@ def lookup_facility_alsi(
             return ALSIFacility[key]
         except KeyError:
             try:
-                return [
-                    obj for obj in ALSIFacility if obj.value == key
-                ][0]
+                return [obj for obj in ALSIFacility if obj.value == key][0]
             except IndexError:
                 raise ValueError("Invalid terminal string")
 
@@ -139,8 +125,6 @@ def lookup_country_alsi(key: Union[ALSICountry, str]) -> ALSICountry:
             return ALSICountry[key]
         except KeyError:
             try:
-                return [
-                    obj for obj in ALSICountry if obj.value == key
-                ][0]
+                return [obj for obj in ALSICountry if obj.value == key][0]
             except IndexError:
                 raise ValueError("Invalid country string")

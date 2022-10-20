@@ -1,5 +1,6 @@
 import enum
 
+
 class AGSICountry(enum.Enum):
     """Enum contains 2 things: code and full name"""
 

@@ -1,4 +1,6 @@
 import enum
+from typing import Dict
+
 
 class AGSICompany(enum.Enum):
     """
@@ -24,8 +26,11 @@ class AGSICompany(enum.Enum):
     def code(self):
         return self.value
 
-    def get_url(self):
-        return "?country=" + self.country + "&company=" + self.code
+    def get_params(self):
+        return {
+            "country": self.country,
+            "company": self.code,
+        }
 
     astora = "21X000000001160J", "AT"
     gsa = "25X-GSALLC-----E", "AT"

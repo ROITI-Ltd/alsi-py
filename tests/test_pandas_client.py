@@ -55,12 +55,16 @@ class TestPandasGieClient:
         assert isinstance(result, pandas.core.frame.DataFrame)
 
     @pytest.mark.asyncio
-    async def test_query_country_agsi_storage_with_correct_country(self, client):
+    async def test_query_country_agsi_storage_with_correct_country(
+        self, client
+    ):
         result = await client.query_country_agsi_storage("FR")
         assert isinstance(result, pandas.core.frame.DataFrame)
 
     @pytest.mark.asyncio
-    async def test_query_country_agsi_storage_with_incorrect_country(self, client):
+    async def test_query_country_agsi_storage_with_incorrect_country(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client.query_country_agsi_storage("Moria")
 
@@ -70,12 +74,16 @@ class TestPandasGieClient:
         assert isinstance(result, pandas.core.frame.DataFrame)
 
     @pytest.mark.asyncio
-    async def test_query_country_alsi_storage_with_correct_country(self, client):
+    async def test_query_country_alsi_storage_with_correct_country(
+        self, client
+    ):
         result = await client.query_country_alsi_storage("BE")
         assert isinstance(result, pandas.core.frame.DataFrame)
 
     @pytest.mark.asyncio
-    async def test_query_country_alsi_storage_with_incorrect_country(self, client):
+    async def test_query_country_alsi_storage_with_incorrect_country(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client.query_country_alsi_storage("Moria")
 
@@ -95,7 +103,9 @@ class TestPandasGieClient:
         assert isinstance(result, pandas.core.frame.DataFrame)
 
     @pytest.mark.asyncio
-    async def test_query_alsi_unavailability_with_incorrect_country(self, client):
+    async def test_query_alsi_unavailability_with_incorrect_country(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client.query_alsi_unavailability("Moria")
 
@@ -110,27 +120,37 @@ class TestPandasGieClient:
         assert isinstance(result, pandas.core.frame.DataFrame)
 
     @pytest.mark.asyncio
-    async def test_query_agsi_unavailability_with_incorrect_country(self, client):
+    async def test_query_agsi_unavailability_with_incorrect_country(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client.query_agsi_unavailability("Moria")
 
     @pytest.mark.asyncio
-    async def test_query_agsi_facility_storage_with_correct_facility(self, client):
+    async def test_query_agsi_facility_storage_with_correct_facility(
+        self, client
+    ):
         result = await client.query_agsi_facility_storage("ugs_berlin")
         assert isinstance(result, pandas.core.frame.DataFrame)
 
     @pytest.mark.asyncio
-    async def test_query_agsi_facility_storage_with_incorrect_facility(self, client):
+    async def test_query_agsi_facility_storage_with_incorrect_facility(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client.query_agsi_facility_storage("falseStorage")
 
     @pytest.mark.asyncio
-    async def test_query_alsi_facility_storage_with_correct_facility(self, client):
+    async def test_query_alsi_facility_storage_with_correct_facility(
+        self, client
+    ):
         result = await client.query_alsi_facility_storage("zeebrugge")
         assert isinstance(result, pandas.core.frame.DataFrame)
 
     @pytest.mark.asyncio
-    async def test_query_alsi_facility_storage_with_incorrect_facility(self, client):
+    async def test_query_alsi_facility_storage_with_incorrect_facility(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client.query_alsi_facility_storage("falseStorage")
 

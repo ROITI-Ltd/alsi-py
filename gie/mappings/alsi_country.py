@@ -1,5 +1,6 @@
 import enum
 
+
 class ALSICountry(enum.Enum):
     """
     ENUM contains 2 things: code and full name

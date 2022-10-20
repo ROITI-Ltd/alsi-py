@@ -1,6 +1,7 @@
 import enum
 from typing import Dict
 
+
 class ALSICompany(enum.Enum):
     """
     ENUM containing 2 things about an Area: code, country
@@ -25,7 +26,7 @@ class ALSICompany(enum.Enum):
     def code(self):
         return self.value
 
-    def get_params(self) -> Dict[str, str]:
+    def get_params(self):
         return {
             "country": self.country,
             "company": self.code,
@@ -54,4 +55,3 @@ class ALSICompany(enum.Enum):
     all_spanish_terminals = "21X0000000013368", "ES*"
     national_grid_grain_lng_post_brexit = "21X-GB-A-A0A0A-7", "GB*"
     south_hook_lng_post_brexit = "21X0000000013554", "GB*"
-

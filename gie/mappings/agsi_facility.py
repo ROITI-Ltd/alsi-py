@@ -1,4 +1,6 @@
 import enum
+from typing import Dict
+
 
 class AGSIFacility(enum.Enum):
     """Enum containing 3 things about an Area: code, country, code company"""
@@ -27,15 +29,12 @@ class AGSIFacility(enum.Enum):
     def code(self):
         return self.value
 
-    def get_url(self):
-        return (
-            "?country="
-            + self.country
-            + "&company="
-            + self.company
-            + "&facility="
-            + self.code
-        )
+    def get_params(self):
+        return {
+            "country": self.country,
+            "company": self.company,
+            "facility": self.code,
+        }
 
     ugs_haidach_astora = "21W000000000078N", "AT", "21X000000001160J"
     ugs_haidach_gsa = "25W-SPHAID-GAZ-M", "AT", "25X-GSALLC-----E"
@@ -49,11 +48,23 @@ class AGSIFacility(enum.Enum):
     ugs_damborice = "21W000000000102F", "CZ", "27X-MORAVIAGS--E"
     vgs_rwe_haje = "21W000000000076R", "CZ", "27XG-RWE-GAS-STI"
     ugs_dolni_bojanovice = "21W000000000074V", "CZ", "27X-SPPSTORAGE-R"
-    vgs_gsd_lille_torup_stenlille = "45W000000000112V", "DK", "21X000000001104T"
-    vgs_saline_tersanne_etrez_manosque = "21W000000000084S", "FR", "21X000000001083B"
+    vgs_gsd_lille_torup_stenlille = (
+        "45W000000000112V",
+        "DK",
+        "21X000000001104T",
+    )
+    vgs_saline_tersanne_etrez_manosque = (
+        "21W000000000084S",
+        "FR",
+        "21X000000001083B",
+    )
     vgs_sediane_saintilliers = "21W0000000000710", "FR", "21X000000001083B"
     vgs_sediane_b_gournay = "21W0000000000702", "FR", "21X000000001083B"
-    vgs_serene_atlantique_chemery = "63W197197128864M", "FR", "21X000000001083B"
+    vgs_serene_atlantique_chemery = (
+        "63W197197128864M",
+        "FR",
+        "21X000000001083B",
+    )
     vgs_serene_nord_trois_fontaines_labbaye = (
         "21W000000000073X",
         "FR",
@@ -87,7 +98,11 @@ class AGSIFacility(enum.Enum):
     ugs_epe_kge = "21W000000000097J", "DE", "21X000000001140P"
     ugs_etzel_ese_met = "21W000000000055Z", "DE", "37X000000000047P"
     ugs_reckrod = "21W0000000000540", "DE", "37X000000000047P"
-    vgs_zone_mnd_esg_ugs_stockstadt = "37Y000000000386Q", "DE", "37X000000000042Z"
+    vgs_zone_mnd_esg_ugs_stockstadt = (
+        "37Y000000000386Q",
+        "DE",
+        "37X000000000042Z",
+    )
     ugs_eschenfelden_nergie = "21Z000000000321Z", "DE", "11XNERGIE------1"
     ugs_inzenham_west = "21W0000000000192", "DE", "21X0000000011748"
     ugs_enschede_epe_nuon = "21W000000000005D", "DE", "37X0000000000119"
@@ -107,7 +122,11 @@ class AGSIFacility(enum.Enum):
     ugs_bremen_lesum_swb = "21W000000000090X", "DE", "11XSWB-BREMEN--I"
     ugs_kiel_ronne = "21W0000000001164", "DE", "37X000000000051Y"
     ugs_allmenhausen = "21W000000000030E", "DE", "21X000000001307F"
-    ugs_etzel_egl_total_etzel_gaslager = "**TOBEPROVIDED**", "DE", "**TOBEPROVIDED**"
+    ugs_etzel_egl_total_etzel_gaslager = (
+        "**TOBEPROVIDED**",
+        "DE",
+        "**TOBEPROVIDED**",
+    )
     ugs_epe_trianel = "21W000000000085Q", "DE", "21X000000001310Q"
     ugs_bierwang = "21W0000000000613", "DE", "21X000000001127H"
     ugs_breitbrunn = "21W0000000000605", "DE", "21X000000001127H"
@@ -115,7 +134,11 @@ class AGSIFacility(enum.Enum):
     ugs_epe_uniper_l = "21W000000000065W", "DE", "21X000000001127H"
     ugs_eschenfelden_uniper = "21W000000000083U", "DE", "21X000000001127H"
     ugs_etzel_erdgas_lager_egl = "21W000000000059R", "DE", "21X000000001127H"
-    ugs_etzel_ese_uniper_energy_storage = "21W0000000000168", "DE", "21X000000001127H"
+    ugs_etzel_ese_uniper_energy_storage = (
+        "21W0000000000168",
+        "DE",
+        "21X000000001127H",
+    )
     ugs_krummhorn = "21W000000000067S", "DE", "21X000000001127H"
     ugs_etzel_ese_vgs = "21W000000000120D", "DE", "21X000000001138C"
     ugs_jemgum_h_vgs = "21W000000000128Y", "DE", "21X000000001138C"
@@ -124,7 +147,11 @@ class AGSIFacility(enum.Enum):
     ugs_szoreg_1 = "21W000000000086O", "HU", "21X0000000013643"
     vgs_mfgt_pusztaederics = "21W000000000087M", "HU", "21X0000000013635"
     ugs_kinsale_southwest = "47W000000000245J", "IE", "47X0000000000584"
-    vgs_edison_stoccaggio_collalto = "21W000000000095N", "IT", "21X0000000013651"
+    vgs_edison_stoccaggio_collalto = (
+        "21W000000000095N",
+        "IT",
+        "21X0000000013651",
+    )
     ugs_cornegliano = "59W-IGSTORAGE-0Q", "IT", "59X4-IGSTORAGE-T"
     vgs_stogit_fiume_treste = "21Z000000000274I", "IT", "21X000000001250I"
     ugs_incukalns = "21W000000000113A", "LV", "21X000000001379R"

@@ -53,11 +53,15 @@ class TestRawGieClient:
         await client[0].query_agsi_news_listing()
 
     @pytest.mark.asyncio
-    async def test_query_country_agsi_storage_with_correct_country(self, client):
+    async def test_query_country_agsi_storage_with_correct_country(
+        self, client
+    ):
         await client[0].query_country_agsi_storage("FR")
 
     @pytest.mark.asyncio
-    async def test_query_country_agsi_storage_with_incorrect_country(self, client):
+    async def test_query_country_agsi_storage_with_incorrect_country(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client[0].query_country_agsi_storage("Moria")
 
@@ -66,11 +70,15 @@ class TestRawGieClient:
         await client[0].query_country_agsi_storage()
 
     @pytest.mark.asyncio
-    async def test_query_country_alsi_storage_with_correct_country(self, client):
+    async def test_query_country_alsi_storage_with_correct_country(
+        self, client
+    ):
         await client[0].query_country_alsi_storage("BE")
 
     @pytest.mark.asyncio
-    async def test_query_country_alsi_storage_with_incorrect_country(self, client):
+    async def test_query_country_alsi_storage_with_incorrect_country(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client[0].query_country_alsi_storage("Moria")
 
@@ -87,7 +95,9 @@ class TestRawGieClient:
         await client[0].query_alsi_unavailability()
 
     @pytest.mark.asyncio
-    async def test_query_alsi_unavailability_with_incorrect_country(self, client):
+    async def test_query_alsi_unavailability_with_incorrect_country(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client[0].query_alsi_unavailability("Moria")
 
@@ -100,25 +110,35 @@ class TestRawGieClient:
         await client[0].query_agsi_unavailability()
 
     @pytest.mark.asyncio
-    async def test_query_agsi_unavailability_with_incorrect_country(self, client):
+    async def test_query_agsi_unavailability_with_incorrect_country(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client[0].query_agsi_unavailability("Moria")
 
     @pytest.mark.asyncio
-    async def test_query_agsi_facility_storage_with_correct_facility(self, client):
+    async def test_query_agsi_facility_storage_with_correct_facility(
+        self, client
+    ):
         await client[0].query_agsi_facility_storage("ugs_berlin")
 
     @pytest.mark.asyncio
-    async def test_query_agsi_facility_storage_with_incorrect_facility(self, client):
+    async def test_query_agsi_facility_storage_with_incorrect_facility(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client[0].query_agsi_facility_storage("falseStorage")
 
     @pytest.mark.asyncio
-    async def test_query_alsi_facility_storage_with_correct_facility(self, client):
+    async def test_query_alsi_facility_storage_with_correct_facility(
+        self, client
+    ):
         await client[0].query_alsi_facility_storage("zeebrugge")
 
     @pytest.mark.asyncio
-    async def test_query_alsi_facility_storage_with_incorrect_facility(self, client):
+    async def test_query_alsi_facility_storage_with_incorrect_facility(
+        self, client
+    ):
         with pytest.raises(ValueError):
             await client[0].query_alsi_facility_storage("falseStorage")
 
@@ -141,12 +161,16 @@ class TestRawGieClient:
             await client[0].query_alsi_company("Moria")
 
     @pytest.mark.asyncio
-    async def test_gie_raw_client_session_request_with_correct_url(self, client):
+    async def test_gie_raw_client_session_request_with_correct_url(
+        self, client
+    ):
         resp = await client[0].session.get("https://agsi.gie.eu/api")
         assert resp.status == 200
 
     @pytest.mark.asyncio
-    async def test_gie_raw_client_session_request_with_incorrect_url(self, client):
+    async def test_gie_raw_client_session_request_with_incorrect_url(
+        self, client
+    ):
         with pytest.raises(ClientResponseError):
             await client[0].session.get("https://agsi.gie.eu/api8888")
 

@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 pandas_client_test.py
 raw_client_test.py
+client_tests.py
