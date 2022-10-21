@@ -1,5 +1,5 @@
 import datetime
-from typing import Union, Optional
+from typing import Union, Optional, Dict, Any
 
 import pandas as pd
 
@@ -17,6 +17,20 @@ class GiePandasClient(GieRawClient):
     AGSI/ALSI Pandas Client which queries the API and returns data.
     """
 
+    _FLOATING_COLS = [
+        "gasInStorage",
+        "consumption",
+        "consumptionFull",
+        "injection",
+        "withdrawal",
+        "netWithdrawal",
+        "workingGasVolume",
+        "injectionCapacity",
+        "withdrawalCapacity",
+        "trend",
+        "full",
+    ]
+
     async def query_agsi_eic_listing(self) -> object:
         """Return all the AGSI EIC(Energy Identification Code) listing.
 
@@ -27,7 +41,7 @@ class GiePandasClient(GieRawClient):
 
         """
         json_result = await super().query_agsi_eic_listing()
-        return pd.DataFrame(json_result)
+        return self._pandas_df_format(json_result)
 
     async def query_alsi_eic_listing(self) -> object:
         """Return all the ALSI EIC(Energy Identification Code) listing.
@@ -39,7 +53,7 @@ class GiePandasClient(GieRawClient):
 
         """
         json_result = await super().query_alsi_eic_listing()
-        return pd.DataFrame(json_result)
+        return self._pandas_df_format(json_result)
 
     async def query_alsi_news_listing(
         self, news_url_item: Optional[Union[int, str]] = None
@@ -55,9 +69,7 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_alsi_news_listing(
             news_url_item=news_url_item
         )
-        df = pd.DataFrame(json_result["data"])
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        return self._pandas_df_format(json_result)
 
     async def query_agsi_news_listing(
         self, news_url_item: Optional[Union[int, str]] = None
@@ -73,9 +85,7 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_agsi_news_listing(
             news_url_item=news_url_item
         )
-        df = pd.DataFrame(json_result["data"])
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        self._pandas_df_format(json_result)
 
     async def query_country_agsi_storage(
         self,
@@ -96,9 +106,7 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_country_agsi_storage(
             country=country, start=start, end=end, date=date, size=size
         )
-        df = pd.DataFrame(json_result["data"])
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        return self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_country_alsi_storage(
         self,
@@ -119,9 +127,7 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_country_alsi_storage(
             country=country, start=start, end=end, date=date, size=size
         )
-        df = pd.DataFrame(json_result["data"])
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        return self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_agsi_facility_storage(
         self,
@@ -146,11 +152,7 @@ class GiePandasClient(GieRawClient):
             date=date,
             size=size,
         )
-        gas_df = pd.DataFrame(json_result)
-        df = pd.DataFrame(json_result["data"])
-        df.insert(0, "gas_day", gas_df["gas_day"], True)
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_alsi_facility_storage(
         self,
@@ -175,11 +177,7 @@ class GiePandasClient(GieRawClient):
             date=date,
             size=size,
         )
-        gas_df = pd.DataFrame(json_result)
-        df = pd.DataFrame(json_result["data"])
-        df.insert(0, "gas_day", gas_df["gas_day"], True)
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_agsi_company(
         self,
@@ -204,9 +202,7 @@ class GiePandasClient(GieRawClient):
             date=date,
             size=size,
         )
-        df = pd.DataFrame(json_result["data"])
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_alsi_company(
         self,
@@ -231,9 +227,7 @@ class GiePandasClient(GieRawClient):
             date=date,
             size=size,
         )
-        df = pd.DataFrame(json_result["data"])
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_agsi_unavailability(
         self,
@@ -253,9 +247,9 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_agsi_unavailability(
             country=country, start=start, end=end, size=size
         )
-        df = pd.DataFrame(json_result["data"])
-        df = df.astype("float", copy=False, errors="ignore")
-        return df
+        return self._pandas_df_format(
+            json_result, ["volume", "injection", "withdrawal"]
+        )
 
     async def query_alsi_unavailability(
         self,
@@ -275,6 +269,25 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_alsi_unavailability(
             country=country, start=start, end=end, size=size
         )
-        df = pd.DataFrame(json_result["data"])
-        df = df.astype("float", copy=False, errors="ignore")
+        return self._pandas_df_format(
+            json_result, ["volume", "injection", "withdrawal"]
+        )
+
+    def _pandas_df_format(
+        self, json_res: object, float_cols: Optional[list] = None
+    ):
+        df = (
+            pd.DataFrame(json_res["data"])
+            if "data" in json_res
+            else pd.DataFrame(json_res)
+        )
+
+        if float_cols is not None:
+            df.loc[:, float_cols] = df.loc[:, float_cols].astype("float")
+
+        if "gas_day" in json_res:
+            df["gas_day"] = pd.to_datetime(
+                json_res["gas_day"], format="%Y-%m-%d"
+            )
+
         return df
