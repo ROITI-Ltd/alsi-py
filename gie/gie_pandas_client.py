@@ -13,26 +13,29 @@ from gie.mappings.alsi_facility import ALSIFacility
 
 
 class GiePandasClient(GieRawClient):
-    # query for all the AGSI EIC provided from the API
-    async def query_agsi_eic_listing(self):
-        """
+    """
+    AGSI/ALSI Pandas Client which queries the API and returns data.
+    """
+
+    async def query_agsi_eic_listing(self) -> object:
+        """Return all the AGSI EIC(Energy Identification Code) listing.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+        pd.DataFrame
+            DataFrame holding the EIC listings.
 
         """
         json_result = await super().query_agsi_eic_listing()
         return pd.DataFrame(json_result)
 
-    async def query_alsi_eic_listing(self):
-        """
+    async def query_alsi_eic_listing(self) -> object:
+        """Return all the ALSI EIC(Energy Identification Code) listing.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+        pd.DataFrame
+            DataFrame holding the EIC listings.
 
         """
         json_result = await super().query_alsi_eic_listing()
@@ -40,13 +43,13 @@ class GiePandasClient(GieRawClient):
 
     async def query_alsi_news_listing(
         self, news_url_item: Optional[Union[int, str]] = None
-    ):
-        """
+    ) -> object:
+        """Return all the ALSI news or a specific country news listings.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+        pd.DataFrame
+            DataFrame holding the NEWS listings.
 
         """
         json_result = await super().query_alsi_news_listing(
@@ -58,13 +61,13 @@ class GiePandasClient(GieRawClient):
 
     async def query_agsi_news_listing(
         self, news_url_item: Optional[Union[int, str]] = None
-    ):
-        """
+    ) -> object:
+        """Return all the AGSI news or a specific country news listings.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+        pd.DataFrame
+            DataFrame holding the NEWS listings.
 
         """
         json_result = await super().query_agsi_news_listing(
@@ -81,13 +84,13 @@ class GiePandasClient(GieRawClient):
         end: Optional[Union[datetime.datetime, str]] = None,
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
-    ):
-        """
+    ) -> object:
+        """Return listing with the AGSI storage data for a specific country or all countries.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+        pd.DataFrame
+            DataFrame holding data for a specific country or all countries listing.
 
         """
         json_result = await super().query_country_agsi_storage(
@@ -104,13 +107,13 @@ class GiePandasClient(GieRawClient):
         end: Optional[Union[datetime.datetime, str]] = None,
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
-    ):
-        """
+    ) -> object:
+        """Return listing with the ALSI storage data for a specific country or all countries.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+        pd.DataFrame
+            DataFrame holding data for a specific country or all countries listing.
 
         """
         json_result = await super().query_country_alsi_storage(
@@ -127,13 +130,13 @@ class GiePandasClient(GieRawClient):
         end: Optional[Union[datetime.datetime, str]] = None,
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
-    ):
-        """
+    ) -> object:
+        """Return listing with the AGSI data for a specific facility storage.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+        pd.DataFrame
+            DataFrame holding the AGSI facility data.
 
         """
         json_result = await super().query_agsi_facility_storage(
@@ -156,13 +159,13 @@ class GiePandasClient(GieRawClient):
         end: Optional[Union[datetime.datetime, str]] = None,
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
-    ):
-        """
+    ) -> object:
+        """Return listing with the ALSI data for a specific facility storage.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+        pd.DataFrame
+            DataFrame holding the ALSI facility data.
 
         """
         json_result = await super().query_alsi_facility_storage(
@@ -185,13 +188,13 @@ class GiePandasClient(GieRawClient):
         end: Optional[Union[datetime.datetime, str]] = None,
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
-    ):
-        """
+    ) -> object:
+        """Returns listing with the AGSI data for a specific company
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+            pd.DataFrame
+            DataFrame holding the AGSI company data.
 
         """
         json_result = await super().query_agsi_company(
@@ -212,13 +215,13 @@ class GiePandasClient(GieRawClient):
         end: Optional[Union[datetime.datetime, str]] = None,
         date: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
-    ):
-        """
+    ) -> object:
+        """Returns listing with the ALSI data for a specific company
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+            pd.DataFrame
+            DataFrame holding the ALSI company data.
 
         """
         json_result = await super().query_alsi_company(
@@ -238,13 +241,13 @@ class GiePandasClient(GieRawClient):
         start: Optional[Union[datetime.datetime, str]] = None,
         end: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
-    ):
-        """
+    ) -> object:
+        """Returns the total AGSI unavailability data or a specific country unavailability.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+            pd.DataFrame
+            DataFrame holding the AGSI unavailability data.
 
         """
         json_result = await super().query_agsi_unavailability(
@@ -260,13 +263,13 @@ class GiePandasClient(GieRawClient):
         start: Optional[Union[datetime.datetime, str]] = None,
         end: Optional[Union[datetime.datetime, str]] = None,
         size: Optional[Union[int, str]] = None,
-    ):
-        """
+    ) -> object:
+        """Returns the total ALSI unavailability data or a specific country unavailability.
 
         Returns
         -------
-            Inherits GieRawClient's method and
-            parses the output as pandas DataFrame
+            pd.DataFrame
+            DataFrame holding the ALSI unavailability data.
 
         """
         json_result = await super().query_alsi_unavailability(
