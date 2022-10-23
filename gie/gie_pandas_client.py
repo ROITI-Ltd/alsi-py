@@ -29,6 +29,11 @@ class GiePandasClient(GieRawClient):
         "withdrawalCapacity",
         "trend",
         "full",
+        "inventory",
+        "sendOut",
+        "dtmi",
+        "dtrs",
+        "volume",
     ]
 
     async def query_agsi_eic_listing(self) -> object:
@@ -85,7 +90,7 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_agsi_news_listing(
             news_url_item=news_url_item
         )
-        self._pandas_df_format(json_result)
+        return self._pandas_df_format(json_result)
 
     async def query_country_agsi_storage(
         self,
@@ -152,7 +157,7 @@ class GiePandasClient(GieRawClient):
             date=date,
             size=size,
         )
-        self._pandas_df_format(json_result, self._FLOATING_COLS)
+        return self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_alsi_facility_storage(
         self,
@@ -177,7 +182,7 @@ class GiePandasClient(GieRawClient):
             date=date,
             size=size,
         )
-        self._pandas_df_format(json_result, self._FLOATING_COLS)
+        return self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_agsi_company(
         self,
@@ -202,7 +207,7 @@ class GiePandasClient(GieRawClient):
             date=date,
             size=size,
         )
-        self._pandas_df_format(json_result, self._FLOATING_COLS)
+        return self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_alsi_company(
         self,
@@ -227,7 +232,7 @@ class GiePandasClient(GieRawClient):
             date=date,
             size=size,
         )
-        self._pandas_df_format(json_result, self._FLOATING_COLS)
+        return self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_agsi_unavailability(
         self,
@@ -247,9 +252,7 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_agsi_unavailability(
             country=country, start=start, end=end, size=size
         )
-        return self._pandas_df_format(
-            json_result, ["volume", "injection", "withdrawal"]
-        )
+        return self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     async def query_alsi_unavailability(
         self,
@@ -269,9 +272,7 @@ class GiePandasClient(GieRawClient):
         json_result = await super().query_alsi_unavailability(
             country=country, start=start, end=end, size=size
         )
-        return self._pandas_df_format(
-            json_result, ["volume", "injection", "withdrawal"]
-        )
+        return self._pandas_df_format(json_result, self._FLOATING_COLS)
 
     def _pandas_df_format(
         self, json_res: object, float_cols: Optional[list] = None
@@ -282,12 +283,13 @@ class GiePandasClient(GieRawClient):
             else pd.DataFrame(json_res)
         )
 
-        if float_cols is not None:
-            df.loc[:, float_cols] = df.loc[:, float_cols].astype("float")
-
         if "gas_day" in json_res:
-            df["gas_day"] = pd.to_datetime(
-                json_res["gas_day"], format="%Y-%m-%d"
-            )
+            df.insert(0, "gas_day", json_res["gas_day"], allow_duplicates=True)
+
+        if float_cols is not None:
+            df_cols = [x for x in float_cols if x in df.columns]
+
+            if df_cols:
+                df[df_cols] = df[df_cols].astype("float", errors="ignore")
 
         return df
