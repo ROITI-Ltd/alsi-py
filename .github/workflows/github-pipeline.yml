@@ -1,0 +1,107 @@
+name: Github Pipeline
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  Lint-And-Test:
+    strategy:
+      matrix:
+        python-version: [3.8]
+        os: ['ubuntu-latest']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip && 
+          pip install -r requirements.txt
+      - name: Lint & Format check
+        run: |
+          python -m mypy . --ignore-missing-imports && 
+          python -m black -l 79 --check . --diff
+          
+      
+      - name: Run Unit Tests
+        run: | 
+          export PYTHONPATH=./gie && 
+          export API_KEY=${{ secrets.API_KEY }} &&
+          python -m pytest ./tests --import-mode=append --cov
+
+  Documentation:
+    needs: Lint-And-Test
+    strategy:
+      matrix:
+        python-version: [3.8]
+        os: ['ubuntu-latest']
+    runs-on: ${{ matrix.os }}
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Generate Sphinx Documentation 
+        run: |
+          pip install -r requirements.txt &&
+          pip install sphinx sphinx_rtd_theme &&
+          sphinx-apidoc -fo ./docs/ ./roitigie/ && 
+          cd ./docs && make html
+
+      - name: Init new repo and commit genereated files
+        run: |
+          cd docs/_build/html && git init && touch .nojekyll
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "Update documentation" -a
+
+      - name: Force push the files into the gh-pages branch
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          directory: docs/_build/html 
+          force: true
+
+
+  Build-And-Deploy:
+    strategy:
+      matrix:
+        python-version: [3.8]
+        os: ['ubuntu-latest']
+    runs-on: ${{ matrix.os }}
+    needs: Lint-And-Test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Package Build 
+        run: pip install build && python -m build
+
+      - name: Upload package to PyPI 
+        run: |
+          pip install twine &&
+          python3 -m twine upload --skip-existing --repository testpypi dist/* -u __token__ -p ${{ secrets.PYPI_TOKEN }}
