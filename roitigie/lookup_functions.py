@@ -39,7 +39,9 @@ def lookup_agsi_company(key: Union[AGSICompany, str]) -> AGSICompany:
             try:
                 return [obj for obj in AGSICompany if obj.value == key][0]
             except IndexError as err:
-                raise ValueError("The company string provided is invalid!") from err
+                raise ValueError(
+                    "The company string provided is invalid!"
+                ) from err
 
 
 # Checking the provided facility string in our base enums
@@ -107,7 +109,9 @@ def lookup_country_agsi(key: Union[AGSICountry, str]) -> AGSICountry:
             try:
                 return [obj for obj in AGSICountry if obj.value == key][0]
             except IndexError as err:
-                raise ValueError("The country string provided is invalid!") from err
+                raise ValueError(
+                    "The country string provided is invalid!"
+                ) from err
 
 
 def lookup_alsi_company(key: Union[ALSICompany, str]) -> ALSICompany:
@@ -139,7 +143,9 @@ def lookup_alsi_company(key: Union[ALSICompany, str]) -> ALSICompany:
             try:
                 return [obj for obj in ALSICompany if obj.value == key][0]
             except IndexError as err:
-                raise ValueError("The company string provided is invalid!") from err
+                raise ValueError(
+                    "The company string provided is invalid!"
+                ) from err
 
 
 def lookup_facility_alsi(key: Union[ALSIFacility, str]) -> ALSIFacility:
@@ -172,7 +178,9 @@ def lookup_facility_alsi(key: Union[ALSIFacility, str]) -> ALSIFacility:
             try:
                 return [obj for obj in ALSIFacility if obj.value == key][0]
             except IndexError as err:
-                raise ValueError("The facility string provided is invalid!") from err
+                raise ValueError(
+                    "The facility string provided is invalid!"
+                ) from err
 
 
 def lookup_country_alsi(key: Union[ALSICountry, str]) -> ALSICountry:
@@ -204,4 +212,6 @@ def lookup_country_alsi(key: Union[ALSICountry, str]) -> ALSICountry:
             try:
                 return [obj for obj in ALSICountry if obj.value == key][0]
             except IndexError as err:
-                raise ValueError("The country string provided is invalid!") from err
+                raise ValueError(
+                    "The country string provided is invalid!"
+                ) from err

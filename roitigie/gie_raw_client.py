@@ -25,7 +25,6 @@ from roitigie.lookup_functions import (
 class GieRawClient:
     """AGSI/ALSI Raw Client which queries the API and returns data"""
 
-
     def __init__(
         self, api_key: str, session: Optional[aiohttp.ClientSession] = None
     ):
@@ -444,7 +443,7 @@ class GieRawClient:
         self,
         api_type: Union[APIType, str],
         endpoint: Optional[str] = None,
-        params: Optional[Dict[str, Any][str, str]] = None,
+        params: Optional[Dict[str, str]] = None,
         news_url_item: Optional[Union[int, str]] = None,
         start: Optional[Union[datetime.datetime, str]] = None,
         end: Optional[Union[datetime.datetime, str]] = None,
