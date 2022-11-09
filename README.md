@@ -4,25 +4,25 @@ Python client for the ALSI/AGSI APIs
 
 Documentation of the API can be found on: <https://www.gie.eu/transparency-platform/GIE_API_documentation_v007.pdf>
 
-Documentation of the client API can be found on: <https://roiti-ltd.github.io/gie-py/>
+Documentation of the client API can be found on: <https://petrofff93.github.io/agsi-py/>
 
 ### Installation
 
 ```sh
-python -m pip install -i https://test.pypi.org/simple/ roitigie
+python -m pip install -i https://test.pypi.org/simple/ roiti.gie
 ```
 
 ### Usage
 
 The package is split in two clients:
 
-1. GieRawClient: Returns data in raw JSON format.
+1. GieRawClient: Returns data in raw Python Dict.
 2. GiePandasClient: Returns parsed data in the form of a pandas DataFrame.
 
 ```python
 import asyncio
 
-from roitigie.gie_pandas_client import GiePandasClient
+from roiti.gie.gie_pandas_client import GiePandasClient
 from decouple import config
 
 
