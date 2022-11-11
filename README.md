@@ -9,7 +9,7 @@ Documentation of the client API can be found on: <https://petrofff93.github.io/a
 ### Installation
 
 ```sh
-python -m pip install -i https://test.pypi.org/simple/ roiti.gie
+python -m pip install -i https://test.pypi.org/simple/ roiti-gie
 ```
 
 ### Usage
@@ -421,7 +421,7 @@ Tell pytest where to look for unit tests and create env for ALSI API key
 - On Unix
 
   ```sh
-  export PYTHONPATH=./roitigie
+  export PYTHONPATH=./roiti
   export API_KEY='<API_KEY>'
   ```
 
@@ -444,7 +444,7 @@ Pull the repository:
 
 ```sh
 git clone https://github.com/Petrofff93/agsi-py.git
-cd ./roitigie
+cd ./roiti
 ```
 
 Set up your working environment:

@@ -36,7 +36,7 @@ jobs:
       
       - name: Run Unit Tests
         run: | 
-          export PYTHONPATH=./roitigie && 
+          export PYTHONPATH=./roiti && 
           export API_KEY=${{ secrets.API_KEY }} &&
           python -m pytest ./tests --import-mode=append --cov
 
@@ -61,7 +61,7 @@ jobs:
         run: |
           pip install -r requirements.txt &&
           pip install sphinx sphinx_rtd_theme &&
-          sphinx-apidoc -fo ./docs/ ./roitigie/ && 
+          sphinx-apidoc -fo ./docs/ ./roiti/ && 
           cd ./docs && make html
 
       - name: Init new repo and commit genereated files

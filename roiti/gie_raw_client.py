@@ -1,26 +1,26 @@
 import datetime
-import urllib.parse
 import logging
+import urllib.parse
 from typing import Any, Dict, Optional, Union
 
 import aiohttp
 
-from roitigie.exceptions import ApiError
-from roitigie.mappings.agsi_company import AGSICompany
-from roitigie.mappings.agsi_country import AGSICountry
-from roitigie.mappings.agsi_facility import AGSIFacility
-from roitigie.mappings.alsi_company import ALSICompany
-from roitigie.mappings.alsi_country import ALSICountry
-from roitigie.mappings.alsi_facility import ALSIFacility
-from roitigie.mappings.api_mappings import APIType
-from roitigie.lookup_functions import (
+from roiti.exceptions import ApiError
+from roiti.lookup_functions import (
+    lookup_agsi_company,
+    lookup_alsi_company,
     lookup_country_agsi,
     lookup_country_alsi,
     lookup_facility_agsi,
     lookup_facility_alsi,
-    lookup_agsi_company,
-    lookup_alsi_company,
 )
+from roiti.mappings.agsi_company import AGSICompany
+from roiti.mappings.agsi_country import AGSICountry
+from roiti.mappings.agsi_facility import AGSIFacility
+from roiti.mappings.alsi_company import ALSICompany
+from roiti.mappings.alsi_country import ALSICountry
+from roiti.mappings.alsi_facility import ALSIFacility
+from roiti.mappings.api_mappings import APIType
 
 logging.basicConfig(
     level=logging.INFO,
@@ -59,7 +59,7 @@ class GieRawClient:
     @api_key.setter
     def api_key(self, value):
         if not value:
-            raise ApiError("API api_type is invalid or missing!")
+            raise ApiError("API key is missing!")
         self.__api_key = value
 
     async def query_agsi_eic_listing(self) -> Dict[str, Any]:
@@ -159,9 +159,7 @@ class GieRawClient:
             country_param = lookup_country_agsi(country)
             params = country_param.get_params()
 
-        self._logger.info(
-            "Query AGSI COUNTRY STORAGE started awaiting result.."
-        )
+        self._logger.info("Query AGSI COUNTRY STORAGE started..")
         return await self.fetch(
             APIType.AGSI,
             params=params,
@@ -205,9 +203,7 @@ class GieRawClient:
             country_param = lookup_country_alsi(country)
             params = country_param.get_params()
 
-        self._logger.info(
-            "Query ALSI COUNTRY STORAGE started awaiting result.."
-        )
+        self._logger.info("Query ALSI COUNTRY STORAGE started..")
         return await self.fetch(
             APIType.AGSI,
             params=params,
@@ -248,9 +244,7 @@ class GieRawClient:
             country_param = lookup_country_agsi(country)
             params = country_param.get_params()
 
-        self._logger.info(
-            "Query AGSI UNAVAILABILITY started awaiting result.."
-        )
+        self._logger.info("Query AGSI UNAVAILABILITY started..")
         return await self.fetch(
             APIType.AGSI,
             endpoint="unavailability",
@@ -291,9 +285,7 @@ class GieRawClient:
             country_param = lookup_country_alsi(country)
             params = country_param.get_params()
 
-        self._logger.info(
-            "Query ALSI UNAVAILABILITY started awaiting result.."
-        )
+        self._logger.info("Query ALSI UNAVAILABILITY started..")
         return await self.fetch(
             APIType.ALSI,
             endpoint="unavailability",
@@ -335,9 +327,7 @@ class GieRawClient:
 
         params = facility_param.get_params()
 
-        self._logger.info(
-            "Query AGSI FACILITY STORAGE started awaiting result.."
-        )
+        self._logger.info("Query AGSI FACILITY STORAGE started..")
         return await self.fetch(
             APIType.AGSI,
             params=params,
@@ -378,9 +368,7 @@ class GieRawClient:
         facility_param = lookup_facility_alsi(facility_name)
         params = facility_param.get_params()
 
-        self._logger.info(
-            "Query ALSI FACILITY STORAGE started awaiting result.."
-        )
+        self._logger.info("Query ALSI FACILITY STORAGE started..")
         return await self.fetch(
             APIType.ALSI,
             params=params,
@@ -421,7 +409,7 @@ class GieRawClient:
         company_param = lookup_agsi_company(company_name)
         params = company_param.get_params()
 
-        self._logger.info("Query AGSI COMPANY started awaiting result..")
+        self._logger.info("Query AGSI COMPANY started..")
         return await self.fetch(
             APIType.AGSI,
             params=params,
@@ -462,7 +450,7 @@ class GieRawClient:
         company_param = lookup_alsi_company(company_name)
         params = company_param.get_params()
 
-        self._logger.info("Query ALSI COMPANY started awaiting result..")
+        self._logger.info("Query ALSI COMPANY started..")
         return await self.fetch(
             APIType.ALSI,
             params=params,

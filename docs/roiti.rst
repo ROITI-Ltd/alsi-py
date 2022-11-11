@@ -12,18 +12,18 @@ roitigie.exceptions module
    :undoc-members:
    :show-inheritance:
 
-roitigie.gie_pandas\_client module
+roiti.gie_pandas\_client module
 --------------------------
 
-.. automodule:: roitigie.gie_pandas_client
+.. automodule:: roiti.gie_pandas_client
    :members:
    :undoc-members:
    :show-inheritance:
 
-roitigie.gie_raw\_client module
+roiti.gie_raw\_client module
 -----------------------
 
-.. automodule:: roitigie.gie_raw_client
+.. automodule:: roiti.gie_raw_client
    :members:
    :undoc-members:
    :show-inheritance:
@@ -31,7 +31,7 @@ roitigie.gie_raw\_client module
 Module contents
 ---------------
 
-.. automodule:: roitigie
+.. automodule:: roiti
    :members:
    :undoc-members:
    :show-inheritance:
