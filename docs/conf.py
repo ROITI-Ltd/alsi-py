@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath("../"))
 
 project = "Roiti GIE"
 copyright = "2022, Roiti LTD"
-author = "Roiti LTD"
+author = "Roiti ltd."
 
 
 # -- General configuration ---------------------------------------------------
