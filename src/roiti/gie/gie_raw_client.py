@@ -5,8 +5,8 @@ from typing import Any, Dict, Optional, Union
 
 import aiohttp
 
-from roiti.exceptions import ApiError
-from roiti.lookup_functions import (
+from .exceptions import ApiError
+from .lookup_functions import (
     lookup_agsi_company,
     lookup_alsi_company,
     lookup_country_agsi,
@@ -14,13 +14,13 @@ from roiti.lookup_functions import (
     lookup_facility_agsi,
     lookup_facility_alsi,
 )
-from roiti.mappings.agsi_company import AGSICompany
-from roiti.mappings.agsi_country import AGSICountry
-from roiti.mappings.agsi_facility import AGSIFacility
-from roiti.mappings.alsi_company import ALSICompany
-from roiti.mappings.alsi_country import ALSICountry
-from roiti.mappings.alsi_facility import ALSIFacility
-from roiti.mappings.api_mappings import APIType
+from .mappings.agsi_company import AGSICompany
+from .mappings.agsi_country import AGSICountry
+from .mappings.agsi_facility import AGSIFacility
+from .mappings.alsi_company import ALSICompany
+from .mappings.alsi_country import ALSICountry
+from .mappings.alsi_facility import ALSIFacility
+from .mappings.api_mappings import APIType
 
 logging.basicConfig(
     level=logging.INFO,
