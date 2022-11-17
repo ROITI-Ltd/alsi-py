@@ -5,8 +5,8 @@ import pytest_asyncio
 from aiohttp import ClientResponseError
 from decouple import config
 
-from roiti.exceptions import ApiError
-from roiti.gie_raw_client import GieRawClient
+from roiti.gie.exceptions import ApiError
+from roiti.gie.gie_raw_client import GieRawClient
 
 API_KEY = config("API_KEY")
 

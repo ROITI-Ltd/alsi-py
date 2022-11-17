@@ -1,11 +1,11 @@
 from typing import Union
 
-from roiti.mappings.agsi_company import AGSICompany
-from roiti.mappings.agsi_country import AGSICountry
-from roiti.mappings.agsi_facility import AGSIFacility
-from roiti.mappings.alsi_company import ALSICompany
-from roiti.mappings.alsi_country import ALSICountry
-from roiti.mappings.alsi_facility import ALSIFacility
+from .mappings.agsi_company import AGSICompany
+from .mappings.agsi_country import AGSICountry
+from .mappings.agsi_facility import AGSIFacility
+from .mappings.alsi_company import ALSICompany
+from .mappings.alsi_country import ALSICountry
+from .mappings.alsi_facility import ALSIFacility
 
 
 def lookup_agsi_company(key: Union[AGSICompany, str]) -> AGSICompany:
