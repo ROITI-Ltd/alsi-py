@@ -9,3 +9,4 @@ sphinx
 sphinx_rtd_theme
 build
 python-decouple
+bumpversion
