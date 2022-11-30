@@ -1,3 +1,7 @@
+# DISCLAIMER
+
+This library is for the older ALSI API v1, a client for the newer v2 can be found here: [ROITI-Ltd/roiti-gie](https://github.com/ROITI-Ltd/roiti-gie)
+
 # alsi-py
 
 Python client for the ALSI API (Aggregated LNG Storage Inventory)
